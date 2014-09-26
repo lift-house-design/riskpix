@@ -1,0 +1,836 @@
+/*
+|--------------------------------------------------------------------------
+| Base Styles
+|--------------------------------------------------------------------------
+*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: "Delius Unicase",cursive;
+	text-transform: uppercase;
+	margin: 10px 0;
+}
+
+h1 {
+	font-size: 24px;
+	color: #528a7f;	
+}
+
+input[type="text"],
+input[type="password"],
+textarea {
+	background-color: #faf8f3;
+	border: 1px solid #ddd;
+	padding: 4px;
+	font-size: 12px;
+	font-family: "Delius Unicase",cursive;
+	text-transform: uppercase;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	width: 150px;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+textarea:focus {
+	outline: 0;
+	border-color: #528A7F;
+}
+
+input[type="submit"] {
+	background-color: #414142;
+	border: 0;
+	color: #fff;
+	font-weight: bold;
+	font-family: "Delius Unicase",cursive;
+	text-transform: uppercase;
+	font-size: 11px;
+	padding: 8px 20px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+}
+input[type="submit"]:hover {
+	background-color: #676767;
+}
+
+a,
+a:hover,
+a:visited {
+	color: #528a7f;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Helpers
+|--------------------------------------------------------------------------
+*/
+
+.align-left {
+	text-align: left;
+}
+
+.align-center {
+	text-align: center;
+}
+
+.align-right {
+	text-align: right;
+}
+
+.font-delius-unicase {
+	font-family: "Delius Unicase",cursive;
+	text-transform: uppercase;
+}
+
+.font-oleo-script-swash-caps {
+	font-family: "Oleo Script Swash Caps",cursive;
+}
+
+.float-left {
+	float: left;
+}
+
+.float-right {
+	float: right;
+}
+
+.clear:before,
+.clear:after {
+	content: " ";
+	display: table;
+}
+
+.clear:after {
+	clear: both;
+}
+
+.clear {
+	*zoom: 1;
+}
+
+.well {
+	background-color: #fdfbf7;
+	padding: 20px;
+	-webkit-box-shadow: inset 1px 1px 5px 1px rgba(0, 0, 0, .2);
+	box-shadow: inset 1px 1px 5px 1px rgba(0, 0, 0, .2);
+}
+.well > *:first-child {
+	margin-top: 0;
+}
+.well > *:last-child {
+	margin-bottom: 0;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Animations
+|--------------------------------------------------------------------------
+*/
+
+@-webkit-keyframes fadein {
+	0% {
+		opacity: 0;
+		bottom: -26px;
+	}
+	100% {
+		opacity: 1;
+		bottom: 0px;
+	}
+}
+@-moz-keyframes fadein {
+	0% {
+		opacity: 0;
+		bottom: -26px;
+	}
+	100% {
+		opacity: 1;
+		bottom: 0px;
+	}
+}
+@-o-keyframes fadein {
+	0% {
+		opacity: 0;
+		bottom: -26px;
+	}
+	100% {
+		opacity: 1;
+		bottom: 0px;
+	}
+}
+@keyframes fadein {
+	0% {
+		opacity: 0;
+		bottom: -26px;
+	}
+	100% {
+		opacity: 1;
+		bottom: 0px;
+	}
+}
+
+@-webkit-keyframes fadeout {
+	0% {
+		opacity: 1;
+		bottom: 0px;
+	}
+	100% {
+		opacity: 0;
+		bottom: -26px;
+	}
+}
+@-moz-keyframes fadeout {
+	0% {
+		opacity: 1;
+		bottom: 0px;
+	}
+	100% {
+		opacity: 0;
+		bottom: -26px;
+	}
+}
+@-o-keyframes fadeout {
+	0% {
+		opacity: 1;
+		bottom: 0px;
+	}
+	100% {
+		opacity: 0;
+		bottom: -26px;
+	}
+}
+@keyframes fadeout {
+	0% {
+		opacity: 1;
+		bottom: 0px;
+	}
+	100% {
+		opacity: 0;
+		bottom: -26px;
+	}
+}
+
+@-webkit-keyframes login-visible {
+	0% {
+		opacity: 0;
+		top: 0px;
+	}
+	100% {
+		opacity: 1;
+		top: 40px;
+	}
+}
+@-moz-keyframes login-visible {
+	0% {
+		opacity: 0;
+		top: 0px;
+	}
+	100% {
+		opacity: 1;
+		top: 40px;
+	}
+}
+@-o-keyframes login-visible {
+	0% {
+		opacity: 0;
+		top: 0px;
+	}
+	100% {
+		opacity: 1;
+		top: 40px;
+	}
+}
+@keyframes login-visible {
+	0% {
+		opacity: 0;
+		top: 0px;
+	}
+	100% {
+		opacity: 1;
+		top: 40px;
+	}
+}
+
+@-webkit-keyframes login-hidden {
+	0% {
+		opacity: 1;
+		top: 40px;
+	}
+	100% {
+		opacity: 0;
+		top: 0px;
+	}
+}
+@-moz-keyframes login-hidden {
+	0% {
+		opacity: 1;
+		top: 40px;
+	}
+	100% {
+		opacity: 0;
+		top: 0px;
+	}
+}
+@-o-keyframes login-hidden {
+	0% {
+		opacity: 1;
+		top: 40px;
+	}
+	100% {
+		opacity: 0;
+		top: 0px;
+	}
+}
+@keyframes login-hidden {
+	0% {
+		opacity: 1;
+		top: 40px;
+	}
+	100% {
+		opacity: 0;
+		top: 0px;
+	}
+}
+
+/*
+|--------------------------------------------------------------------------
+| Modules
+|--------------------------------------------------------------------------
+*/
+
+.errors {
+	text-align: left;
+	font-size: 13px;
+	background-color: #ffdddd;
+	border: 1px solid #d90000;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+.errors ul {
+	margin: 10px 0 0 0;
+	padding: 0 0 0 30px;
+	list-style: square;
+	font-weight: bold;
+}
+
+.info {
+	text-align: left;
+	font-size: 13px;
+	background-color: #cbcff6;
+	border: 1px solid #0014d9;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+.info ul {
+	margin: 0;
+	padding: 0 0 0 30px;
+	list-style: square;
+	font-weight: bold;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Layout
+|--------------------------------------------------------------------------
+*/
+
+html,
+body {
+	background-color: #f9f5ed;
+	font-family: Thonburi,Verdana,sans-serif;
+	color: #3a3637;
+}
+
+#nav-wrapper {
+	border-top: 5px solid #3a3637;
+	position: fixed;
+	z-index: 2;
+	width: 100%;
+}
+#nav-wrapper > .wrapper {
+	position: relative;
+	height: 40px;
+}
+
+.wrapper {
+	width: 1000px;
+	margin: 0 auto;
+}
+
+#main-outer-wrapper {
+	/*border-top: 5px solid #3a3637;*/
+	border-bottom: 5px solid #d9deb0;
+	min-width: 1000px;
+	background: url(/assets/img/layout/bg-lines.png) repeat-x;
+	background-position: 0 145px;
+}
+#main-outer-wrapper > .wrapper {
+	position: relative;
+	overflow: hidden;
+	padding-bottom: 10px;
+}
+
+nav {
+	line-height: 22px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 2;
+}
+nav a {
+	float: left;
+	color: #faf8f3;
+	font-family: "Croissant One",cursive;
+	text-decoration: none;
+	text-transform: lowercase;
+	font-size: 16px;
+	line-height: 40px;
+	width: 110px;
+	overflow: hidden;
+	text-align: center;
+}
+nav a:hover,
+nav a:visited {
+	color: #faf8f3;
+}
+nav a.services {
+	background-color: #d9deb0;
+}
+nav a.services:hover {
+	background: #d9deb0;
+	background: -moz-linear-gradient(top,  #d9deb0 50%, #c3d08f 50%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(50%,#d9deb0), color-stop(50%,#c3d08f));
+	background: -webkit-linear-gradient(top,  #d9deb0 50%,#c3d08f 50%);
+	background: -o-linear-gradient(top,  #d9deb0 50%,#c3d08f 50%);
+	background: -ms-linear-gradient(top,  #d9deb0 50%,#c3d08f 50%);
+	background: linear-gradient(to bottom,  #d9deb0 50%,#c3d08f 50%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d9deb0', endColorstr='#c3d08f',GradientType=0 );
+}
+nav a.portfolio {
+	background-color: #abc4a4;
+}
+nav a.portfolio:hover {
+	background: #abc4a4;
+	background: -moz-linear-gradient(top,  #abc4a4 50%, #86ac84 50%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(50%,#abc4a4), color-stop(50%,#86ac84));
+	background: -webkit-linear-gradient(top,  #abc4a4 50%,#86ac84 50%);
+	background: -o-linear-gradient(top,  #abc4a4 50%,#86ac84 50%);
+	background: -ms-linear-gradient(top,  #abc4a4 50%,#86ac84 50%);
+	background: linear-gradient(to bottom,  #abc4a4 50%,#86ac84 50%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#abc4a4', endColorstr='#86ac84',GradientType=0 );
+}
+nav a.about-us {
+	background-color: #528a7f;
+}
+nav a.about-us:hover {
+	background: #528a7f;
+	background: -moz-linear-gradient(top,  #528a7f 50%, #2c6e5e 50%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(50%,#528a7f), color-stop(50%,#2c6e5e));
+	background: -webkit-linear-gradient(top,  #528a7f 50%,#2c6e5e 50%);
+	background: -o-linear-gradient(top,  #528a7f 50%,#2c6e5e 50%);
+	background: -ms-linear-gradient(top,  #528a7f 50%,#2c6e5e 50%);
+	background: linear-gradient(to bottom,  #528a7f 50%,#2c6e5e 50%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#528a7f', endColorstr='#2c6e5e',GradientType=0 );
+}
+nav a.quote {
+	background-color: #425555;
+}
+nav a.quote:hover {
+	background: #425555;
+	background: -moz-linear-gradient(top,  #425555 50%, #223332 50%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(50%,#425555), color-stop(50%,#223332));
+	background: -webkit-linear-gradient(top,  #425555 50%,#223332 50%);
+	background: -o-linear-gradient(top,  #425555 50%,#223332 50%);
+	background: -ms-linear-gradient(top,  #425555 50%,#223332 50%);
+	background: linear-gradient(to bottom,  #425555 50%,#223332 50%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#425555', endColorstr='#223332',GradientType=0 );
+}
+nav a.login,
+nav a.dashboard,
+nav a.logout {
+	background-color: #333132;
+	cursor: pointer;
+}
+nav a.login:hover,
+nav a.dashboard:hover,
+nav a.logout:hover {
+	background: #333132;
+	background: -moz-linear-gradient(top,  #333132 50%, #131212 50%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(50%,#333132), color-stop(50%,#131212));
+	background: -webkit-linear-gradient(top,  #333132 50%,#131212 50%);
+	background: -o-linear-gradient(top,  #333132 50%,#131212 50%);
+	background: -ms-linear-gradient(top,  #333132 50%,#131212 50%);
+	background: linear-gradient(to bottom,  #333132 50%,#131212 50%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#333132', endColorstr='#131212',GradientType=0 );
+}
+
+#login {
+	position: absolute;
+	right: 0;
+	top: 0px;
+	width: 200px;
+	background-color: #131212;
+	padding: 10px;
+	text-align: right;
+	opacity: 0;
+	z-index: 1;
+	display: none;
+	-webkit-animation: login-hidden .5s;
+	-moz-animation: login-hidden .5s;
+	-o-animation: login-hidden .5s;
+	animation: login-hidden .5s;
+}
+#login.visible {
+	top: 40px;
+	opacity: 1;
+	-webkit-animation: login-visible .5s;
+	-moz-animation: login-visible .5s;
+	-o-animation: login-visible .5s;
+	animation: login-visible .5s;
+}
+#login input[type="text"],
+#login input[type="password"] {
+	width: 190px;
+	margin-bottom: 10px;
+}
+
+header {
+	padding-top: 40px;
+	text-align: center;
+	width: 506px;
+	margin: 0 auto 10px auto;
+}
+header #logo-above {
+	font-family: "Delius Unicase",cursive;
+	margin-top: 55px;
+	margin-bottom: 15px;
+	font-size: 18px;
+	text-transform: uppercase;
+}
+header #logo-below {
+	font-family: "Oleo Script Swash Caps",cursive;
+	text-transform: lowercase;
+	text-align: right;
+	font-size: 16px;
+	margin-bottom: 45px;
+	margin-top: 5px;
+}
+
+footer {
+	border-top: 20px solid #528a7f;
+	background-color: #3a3637;
+	min-width: 980px;
+}
+
+footer #footer-top {
+	text-align: center;
+	border-bottom: 1px solid #faf8f3;
+	padding: 15px 0;
+}
+
+footer #footer-top a,
+footer #footer-top #check-us-out {
+	margin: 0 10px;
+}
+
+footer #footer-top #check-us-out {
+	color: #faf8f3;
+	font-weight: normal;
+	font-size: 20px;
+	font-family: "Oleo Script Swash Caps",cursive;
+}
+
+footer #footer-bottom:before,
+footer #footer-bottom:after {
+    content: " ";
+    display: table;
+}
+footer #footer-bottom:after {
+    clear: both;
+}
+footer #footer-bottom {
+    *zoom: 1;
+    padding: 10px;
+    line-height: 22px;
+}
+
+footer #footer-bottom #copyright {
+	float: left;
+	color: #faf8f3;
+	font-size: 11px;
+}
+
+footer #footer-bottom #links {
+	float: right;
+}
+footer #footer-bottom #links a {
+	text-decoration: none;
+	color: #faf8f3;
+	font-size: 11px;
+	margin-left: 20px;
+}
+footer #footer-bottom #links a:hover {
+	text-decoration: underline;
+}
+
+.fancybox-inner > *:first-child {
+	margin-top: 0 !important;
+}
+.fancybox-inner > *:last-child {
+	margin-bottom: 0 !important;
+}
+.fancybox-outer {
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	background-color: #faf8f3;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Homepage
+|--------------------------------------------------------------------------
+*/
+
+div.services {
+	background: url(/assets/img/layout/services-bg.png) no-repeat center center;
+	width: 980px;
+	height: 406px;
+	position: relative;
+	margin: 0 auto;
+}
+div.services .left {
+	position: absolute;
+	width: 290px;
+	height: 362px;
+	left: 0;
+	top: 18px;
+}
+div.services .right {
+	position: absolute;
+	width: 290px;
+	height: 362px;
+	right: 0;
+	top: 18px;
+	text-align: left;
+}
+div.services .middle {
+	position: absolute;
+	width: 340px;
+	height: 406px;
+	left: 310px;
+	top: 0;
+	text-align: left;
+}
+div.services .section {
+	font-family: "Delius Unicase",cursive;
+	text-transform: uppercase;
+	text-align: center;
+	padding: 10px;
+}
+div.services .left h3,
+div.services .middle h3,
+div.services .right h3 {
+	font-size: 28px;
+	font-weight: normal;
+}
+
+div.services .section p:last-child {
+	text-align: right;
+	padding-right: 20px;
+}
+
+h2.gear,
+h2.latest,
+h2.love,
+h2.quote {
+	margin: 45px auto 25px auto;
+	width: 486px;
+	height: 83px;
+	background: url(/assets/img/layout/icons2.png) center top no-repeat;
+	text-indent: -9999px;
+}
+
+h2.gear {
+	background-position: 0 0;
+}
+h2.latest {
+	background-position: 0 -83px;
+}
+h2.love {
+	background-position: 0 -166px;
+}
+h2.quote {
+	background-position: 0 -249px;
+}
+
+#latest {
+	text-align: center;
+}
+
+#latest .work {
+	display: inline-block;
+	margin: 0 30px;
+	position: relative;
+	overflow: hidden;
+}
+
+#latest .work:first-child {
+	margin-left: 0;
+}
+
+#latest .work:last-child {
+	margin-right: 0;
+}
+
+#latest .work img {
+	width: 200px;
+	height: 200px;
+}
+
+#latest .work .caption {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: -26px;
+	background: rgba(0,0,0,.7);
+	color: #fff;
+	font-weight: bold;
+	font-size: 12px;
+	line-height: 26px;
+	opacity: 0;
+	-webkit-animation: fadeout .5s;
+	-moz-animation: fadeout .5s;
+	-o-animation: fadeout .5s;
+	animation: fadeout .5s;
+}
+
+.fancybox-skin {
+	background-color: #f9f5ed !important;
+}
+
+#work-details {
+	padding: 20px;
+	width: 560px;
+	background-color: #faf8f3;
+}
+#work-details .float-left {
+	width: 200px;
+	text-align: center;
+	font-size: 12px;
+}
+
+#work-details .float-left img {
+	width: 200px;
+	height: 200px;
+	margin-bottom: 10px;
+}
+
+#work-details .float-right {
+	width: 340px;
+	margin-left: 20px;
+}
+
+#work-details .clear {
+	
+}
+
+#latest .work:hover .caption {
+	opacity: 1;
+	bottom: 0px;
+	-webkit-animation: fadein .5s;
+	-moz-animation: fadein .5s;
+	-o-animation: fadein .5s;
+	animation: fadein .5s;
+}
+
+#quote-form {
+	width: 600px;
+	margin: 0 auto 45px auto;
+	text-align: center;
+}
+
+#quote-form > .font-oleo-script-swash-caps {
+	font-size: 20px;
+}
+
+#quote-form input.error,
+#quote-form textarea.error {
+	margin-bottom: 5px !important;
+	border-color: #d90000;
+}
+
+#quote-form label.error {
+	margin-bottom: 10px;
+	font-weight: bold;
+	display: block;
+	text-align: left;
+	padding-left: 5px;
+	font-family: Thonburi,Verdana,sans-serif;
+	font-size: 11px;
+	color: #d90000;
+}
+
+#quote-form .clear {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+#quote-form .clear .float-left {
+	width: 291px;
+}
+#quote-form .clear .float-right {
+	width: 291px;
+}
+#quote-form .clear .float-left input[type="text"],
+#quote-form .clear .float-right textarea {
+	width: 280px;
+}
+#quote-form .clear .float-left input[type="text"] {
+	margin-bottom: 10px;
+}
+#quote-form .clear .float-right textarea {
+	height: 155px;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Dashboard
+|--------------------------------------------------------------------------
+*/
+
+/*#dashboard.ui-accordion .ui-accordion-header {
+	background: #333132;
+	border: 0;
+	color: #fff;
+	font-family: "Croissant One",cursive;
+	margin-top: 10px;
+	padding-left: .7em;
+}
+#dashboard .ui-accordion-header-active {
+	background: #333132;
+	background: -moz-linear-gradient(top,  #333132 50%, #131212 50%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(50%,#333132), color-stop(50%,#131212));
+	background: -webkit-linear-gradient(top,  #333132 50%,#131212 50%);
+	background: -o-linear-gradient(top,  #333132 50%,#131212 50%);
+	background: -ms-linear-gradient(top,  #333132 50%,#131212 50%);
+	background: linear-gradient(to bottom,  #333132 50%,#131212 50%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#333132', endColorstr='#131212',GradientType=0 );
+}
+#dashboard .ui-accordion-header-icon {
+	display: none;
+}*/
+
+#dashboard h2 {
+	font-family: "Croissant One",cursive;
+	text-transform: lowercase;
+}
+
+#dashboard h2.colorbar-1 {
+	
+}

@@ -1,0 +1,50 @@
+/*
+|--------------------------------------------------------------------------
+| Helpers
+|--------------------------------------------------------------------------
+*/
+
+.align-left {
+	text-align: left;
+}
+
+.align-center {
+	text-align: center;
+}
+
+.align-right {
+	text-align: right;
+}
+
+.float-left {
+	float: left;
+}
+
+.float-right {
+	float: right;
+}
+
+.clear {
+	@include clearfix;
+}
+
+.wrapper {
+	width: $page_width;
+	margin: 0 auto;
+}
+
+.padding-top {
+	padding-top: 15px;
+}
+
+.padding-bottom {
+	padding-bottom: 15px;
+}
+
+.margin-top {
+	margin-top: 15px;
+}
+
+.margin-bottom {
+	margin-bottom: 15px;
+}

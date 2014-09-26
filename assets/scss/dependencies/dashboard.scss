@@ -1,0 +1,95 @@
+hr{ margin:8px 0; }
+
+.multiselect{
+  margin:0px;
+  text-align:left;
+  border:thin solid black;
+  cursor:pointer;
+  list-style: none;
+}
+.multiselect-delete{
+  padding-right:4px;
+}
+
+.result-container{
+  margin-top:10px;
+}
+.result-container .result{
+  border-top:1px solid black;
+  border-left:1px solid black;
+  border-right:1px solid black;
+  padding:4px 8px;
+}
+.result-container .result:last-child{
+  border-bottom:1px solid black;
+}
+.result-container .result:nth-child(odd){
+  background-color:#f9f9f9;
+}
+.result-container .result:nth-child(even){
+  background-color:#e9e9e9;
+}
+
+.row-fluid .smash div:nth-child(1){
+  padding-top:4px;
+  text-align:right;
+}
+.row-fluid .smash div:nth-child(2){
+  text-align:left; 
+}
+
+.ui-selected{
+  background: #000
+}
+
+
+#accordion-dashboard{
+  margin:8px;
+}
+#accordion-dashboard .accordion-body{
+  border-bottom-left-radius:4px;
+  border-bottom-right-radius:4px;
+}
+#accordion-dashboard .accordion-group{
+  border-color:rgb(67,67,67);
+  overflow:hidden;
+}
+#accordion-dashboard .accordion-toggle{
+  text-align:center;
+}
+
+#collapseOperations .multiselect{
+  width:283px;
+}
+#collapseOperations .accordion-inner{
+  padding:10px 4px;
+}
+#collapseOperations .multiselect{
+  margin:0px auto;
+  border:1px solid black;
+}
+#collapseOperations .multiselect.add{
+  width:283px;
+  border-bottom:0px !important;
+}
+#collapseOperations .multiselect .add .ui-selectee{
+  border:0px;
+}
+#collapseOperations .multiselect .add-input{
+  width:251px;
+}
+#collapseOperations .multiselect .add-button{
+  padding-right:4px;
+  text-align:center;
+  font-size:24px;
+}
+
+#edit-operation .row-fluid{
+  max-width:800px;
+  margin: 0px auto;
+}
+#edit-operation .row-fluid .main-span{
+  min-width:280px;
+  width:48%;
+  margin: 8px 1%;
+}

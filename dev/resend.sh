@@ -1,0 +1,1 @@
+curl -sS local.photowrite.com/claim/cron_resend >> resend.log

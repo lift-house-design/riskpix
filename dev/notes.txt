@@ -1,0 +1,16 @@
+MAKE SURE /assets/img/upload AND /assets/img/upload/thumb EXIST AND THE WEBSERVER HAS WRITE ACCESS TO THEM! (chmod 755)
+
+
+Might try to install imageantialias() for libraries/Upload.php, here's how:
+Open up a terminal.
+Become root by typing su and enter your root password when prompted.
+Download some packages we'll need for the install. Type apt-get install build-essential debhelper fakeroot dpkg-dev firebird2.5-dev 
+Change your current directory to your source one. cd /usr/src.
+Download the PHP 5 source code by typing apt-get source php5.
+We also need the PHP 5 dependencies. To download these, enter apt-get build-dep php5.
+Go into the downloaded PHP directory. cd php5-XXXX. just press after you've typed php5- to complete the folder name.
+Now we need to edit a config file to change it into the bundled version of GD. Type  editor debian/rules. (I have removed any reference to mysql in the cofigure lines )
+Locate the line that says --with-gd=shared,/usr --enable-gd-native-ttf \ and change it to --with-gd=shared --enable-gd-native-ttf \ by removing ,/usr. (Press ctrl+w to find something, if you search for gd, it is near the second occurrence). To save the file, we need to press ctrl+x then press y and then enter.
+Now we've done setting up we now need to compile it. Type dpkg-buildpackage -rfakeroot -d
+When it's done, you should have a load of .deb files in the parent directory. Find the one starting with php5-gd.
+Install it by double clicking on it, or from the terminal, type dpkg -i php5-gdXXXXXXX just press after you've typed php5-gd to complete the file name.

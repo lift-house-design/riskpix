@@ -1,0 +1,155 @@
+@import 'application.less';
+
+img.logo{
+	.iblock;
+	@media all and (max-width:480px) {
+		.iblock;
+	}
+}
+img.mileage{
+	margin-left:-30px;
+	width:296px;
+	top:23px;
+}
+
+.black{
+	color: black;
+}
+#claim-number{
+	color: black;
+	font-family: 'Lato';
+	letter-spacing:0px;
+	text-shadow: 1px 1px 10px white;
+}
+
+/* fix bxSlider */
+.bx-wrapper,
+.bx-viewport,
+.bx-pager,
+.bx-pager-item{
+	.visible;
+	box-sizing: content-box;
+	-moz-box-sizing: content-box;
+}
+
+.bx-wrapper{
+	margin-bottom:10px !important;
+}
+
+/* tip slider */
+.tip-slider{
+	border:0;
+	margin-top:0;
+	li{
+		height:200px;
+	}
+	.bx-caption{
+		position:absolute;
+		top:164px;
+		left:0px;
+		.align-left;
+		background:black !important;
+		font-size:20px;
+		line-height:16px;
+	}
+}
+
+.notice{
+	background: @gray4;
+	border: 1px solid @white;
+	color:@white;
+	.round(5);
+	.pad(4px 24px 6px);
+}
+
+.sample-vin{
+	margin-top:-40px;
+	color:@white;
+	.title{
+		background: @gray4;
+		border: 1px solid @white;
+		.round(5);
+		.pad(4px 24px 6px);
+	}
+	.content{
+		background: @gray4;
+		border: 1px solid @white;
+		.round(5);
+		.pad(4px 24px 6px);
+	}
+	.border{
+		height:40px;
+		border: 1px solid @gray4;
+		.round(5);
+		width:240px;
+		position:relative;
+		top:58px;
+	}
+}
+
+
+.progress{
+	border-top: 1px solid @gray4;
+	border-bottom: 1px solid @gray4;
+	background: @gray4;
+	color: @white;
+	.bar{
+		width:99%;
+		margin: 4px auto;
+		height: 10px;
+		.round(10);
+		background: @gray1;
+		overflow:hidden !important;
+		div{
+			.w33pc;
+			background: @orange;
+			position:absolute;
+			height:10px;
+			.round(10);
+		}
+		.take-photos{
+			left:33.333333%;
+		}
+		.submit{
+			right:0px;
+		}
+	}
+}
+
+.vehicle-data-table{
+	border: 2px solid @gray4;
+	width:300px;
+	margin: 0 auto;
+	.row{
+		background: @white;
+		border-bottom: 2px solid @gray4;
+		.pad(5px 5px 1px 5px);
+		.l{
+			.align-right;
+			.w20pc;
+		}
+		.r{
+			font-family:'Lato';
+			.align-center;
+			.w80pc;
+			.padl(5%);
+
+			input{
+				.pad(4px 4px 2px 4px);
+				height:24px;
+			}
+		}
+
+	}
+	.row:first-child{
+		.pad(8px 5px 8px 5px);
+	}
+	.row:last-child{
+		border-bottom: 0;
+	}
+}
+
+#topbar-report{
+	background: @gray1;
+	.align-center;
+}

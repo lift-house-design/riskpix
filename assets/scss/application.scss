@@ -1,0 +1,16 @@
+@import "dependencies/application";
+
+/**
+ * MODULES
+ */
+
+// Forms and form fields
+ @import "modules/forms";
+
+ .form-field {
+    @extend %form-field;
+
+    > .field {
+        @extend %field-container;
+    }
+ }

@@ -1,0 +1,22 @@
+<IfModule mod_rewrite.c>
+    # Yes, I know I am calling this below; trying to separate the garbage from the clean rewrite code...
+    RewriteEngine on
+    # Favicon
+    RewriteRule ^favicon.ico$ /assets/favicons/favicon.ico [L]
+    # redirext www to non-www
+    RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+    RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+    ###########################################
+
+    RewriteEngine On
+    RewriteBase /
+
+    # Allow access to specific URIs
+    RewriteCond $1 !^(index\.php|assets|robots\.txt)
+    RewriteRule ^(.*)$ /index.php/$1 [L]
+
+    # Rewrite everything else that's not a file or directory to the CodeIgniter router
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ /index.php/$1 [L]
+</IfModule>

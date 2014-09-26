@@ -1,0 +1,121 @@
+@import 'application.less';
+
+.estimator-radio{
+	width:300px;
+	tr{
+		td{
+			.pad(5px 0px 5px 0px);
+		}
+		td:last-child{
+ 			.lato;
+ 			.align-right;
+ 			width:270px;
+		}
+	}
+}
+
+.dataTables_paginate,
+.dataTables_wrapper,
+.dataTables_filter{
+	.visible;
+	margin: 4px;
+}
+.dataTables_paginate{
+	width:60%;
+}
+.dataTables_filter{
+	width:100%;
+	input{
+		width:70%;
+	}
+}
+
+.vehicle-data-table{
+	border: 2px solid @gray4;
+	margin: 0 auto;
+	overflow:auto;
+	width:90%;
+	max-width:800px;
+	.row{
+		background: @white;
+		border-bottom: 2px solid @gray4;
+		.pad(8px);
+		.l{
+			.c(@c0);
+			.align-right;
+			.w33pc;
+			.padr(10%);
+		}
+		.r{
+			.c(@c0);
+			font-family:'Lato';
+			.align-left;
+			.w66pc;
+		}
+	}
+	.row:last-child{
+		border-bottom: 0;
+	}
+}
+
+.photos{
+	img{
+		border: 2px solid black;
+		margin-bottom:10px;
+		background-color: white;
+		max-width:100%;
+	}
+}
+
+#claims-table{
+	tr.odd td{
+		background-color: #f5f5f5; 
+	}
+	tr.odd td.sorting_1{
+		background-color: #ececec; 
+	}
+	tr.even td{
+		background-color: #f9f9f9; 
+	}
+	tr.even td.sorting_1{
+		background-color: #f1f1f1; 
+	}
+}
+
+.center-wrap{
+	max-width:960px;
+	margin:0 auto;
+	min-width:320px;
+	.visible
+}
+
+.accordion{
+	.pad(2px);
+}
+.ui-accordion-content{
+	.pad(2px) !important;
+	.vehicle-data-table{
+		width:100%;
+	}
+}
+.slick{
+	.pad(0);
+	.hidden;
+	div{
+		.align-center;
+		img{
+			max-width:100%;
+			.inline-block;
+		}
+	}
+	button{
+		width:auto;
+		height:auto;
+		box-shadow:none;
+		border:0;
+		font-size:0;
+	}
+}
+.slick-slider{
+	margin:0px;
+}

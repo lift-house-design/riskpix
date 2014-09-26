@@ -1,0 +1,3 @@
+The SCSS files in this directory are actually the compiled LESS files (they're really just plain ol' CSS). Rather than waste time converting the poorly written LESS files into SCSS, I'm just importing the styles in each *.scss file, then overriding whatever new styles I need/modify as SCSS.
+
+*** IMPORTANT: The files in this directory (dependencies) are not actually SCSS files. They're CSS files. They are named as SCSS so that sass will @import them correctly.

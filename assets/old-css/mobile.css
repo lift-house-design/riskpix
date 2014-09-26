@@ -1,0 +1,245 @@
+p {
+	padding: 0 10px;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Layout
+|--------------------------------------------------------------------------
+*/
+
+html,
+body {
+	font-size: 12px;
+}
+
+#main-outer-wrapper {
+	min-width: 320px;
+	background-image: url(/assets/img/layout/bg-lines-mobile.png);
+	background-position: 0 85px;
+}
+
+.wrapper {
+	width: 320px;
+}
+
+nav {
+	line-height: 16px;
+	overflow: hidden;
+}
+nav a {
+	font-size: 9px;
+	width: 64px;
+	line-height: 40px;
+}
+nav a.services:hover {
+	background: #d9deb0;
+}
+nav a.portfolio:hover {
+	background: #abc4a4;
+}
+nav a.about-us:hover {
+	background: #528a7f;
+}
+nav a.quote:hover {
+	background: #425555;
+}
+nav a.login:hover,
+nav a.dashboard:hover,
+nav a.logout:hover {
+	background: #333132;
+}
+
+#account {
+	display: none;
+}
+
+header {
+	margin: 0 0 10px 0;
+	width: auto;
+	padding-top: 57px;
+}
+header #logo-above {
+	margin-top: 0;
+	margin-bottom: 5px;
+	font-size: 11px;
+}
+header #logo img {
+	width: 300px;
+}
+header #logo-below {
+	font-size: 13px;
+	margin-bottom: 20px;
+}
+
+footer {
+	min-width: 320px;
+}
+footer #footer-top {
+	margin: 0 10px;
+}
+footer #footer-top > a > img {
+	width: 32px;
+	height: 32px;
+}
+footer #footer-top a,
+footer #footer-top #check-us-out {
+	margin: 0;
+}
+
+footer #footer-top #check-us-out {
+	font-size: 11px;
+}
+footer #footer-bottom #copyright,
+footer #footer-bottom #links {
+	float: none;
+	text-align: center;
+}
+footer #footer-bottom #links a {
+	margin: 0 5px;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Helpers
+|--------------------------------------------------------------------------
+*/
+
+.hide-mobile {
+	display: none;
+}
+
+.well {
+	-webkit-box-shadow: inset .5px .5px 5px 1px rgba(0, 0, 0, .2);
+	box-shadow: inset .5px .5px 5px 1px rgba(0, 0, 0, .2);
+}
+
+/*
+|--------------------------------------------------------------------------
+| Homepage
+|--------------------------------------------------------------------------
+*/
+
+div.services {
+	width: 300px;
+	margin: 0 auto;
+	height: auto;
+	position: static;
+	background: none;
+}
+div.services .left,
+div.services .middle,
+div.services .right {
+	position: static;
+	height: auto;
+	width: 280px;
+	padding: 10px;
+	font-size: 11px;
+	background: url(/assets/img/layout/services-bg-mobile.jpg) center bottom no-repeat #fcf9f4;
+	margin-bottom: 10px;
+}
+div.services .left h3,
+div.services .middle h3,
+div.services .right h3 {
+	font-size: 20px;
+}
+
+h2.gear,
+h2.latest,
+h2.love,
+h2.quote {
+	margin: 30px auto 10px auto;
+	width: 300px;
+	height: 51.25px;
+	background: url(/assets/img/layout/icons2-mobile.png) center top no-repeat;
+	text-indent: -9999px;
+}
+
+h2.gear {
+	background-position-y: 0px;
+}
+h2.latest {
+	background-position-y: -51.25px;
+}
+h2.love {
+	background-position-y: -102.5px;
+}
+h2.quote {
+	background-position-y: -153.75px;
+}
+
+#latest .work {
+	margin: 5px;
+}
+#latest .work:first-child {
+	margin: 5px;
+}
+#latest .work:last-child {
+	margin: 5px;
+}
+
+#latest .work img {
+	width: 130px;
+	height: 130px;
+}
+#latest .work .caption {
+	opacity: 1;
+	bottom: 0;
+	line-height: 22px;
+	font-size: 11px;
+	-webkit-animation: none;
+	-moz-animation: none;
+	-o-animation: none;
+	animation: none;
+}
+
+#latest .work:hover .caption {
+	-webkit-animation: none;
+	-moz-animation: none;
+	-o-animation: none;
+	animation: none;
+}
+
+#work-details {
+	padding: 0;
+	width: 280px;
+}
+#work-details .float-left {
+	float: none;
+	width: auto;
+}
+#work-details .float-left img {
+	width: 130px;
+	height: 130px;
+}
+#work-details .float-left a {
+	
+}
+#work-details .float-right {
+	float: none;
+	margin-left: 0;
+	width: auto;
+	text-align: center;
+}
+
+#about-us-content {
+	width: 260px;
+	margin: 0 auto;
+}
+
+#quote-form {
+	width: 260px;
+	margin-bottom: 30px;
+}
+#quote-form > .font-oleo-script-swash-caps {
+	font-size: 16px;
+}
+#quote-form .clear .float-left,
+#quote-form .clear .float-right {
+	float: none;
+	width: auto;
+}
+#quote-form .clear .float-left input[type="text"],
+#quote-form .clear .float-right textarea {
+	width: 245px;
+}

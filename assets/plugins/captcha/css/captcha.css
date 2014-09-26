@@ -1,0 +1,28 @@
+ul.captcha {
+    width:240px;
+    list-style-type: none;
+    margin: 5px auto;
+    padding: 0;
+}
+ul.captcha li {
+    margin: 3px 3px 3px 0;
+    padding: 1px;
+    float: left;
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
+    text-align: center;
+    line-height:35px;
+    cursor:pointer;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.5);
+    text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+    /*
+    background:#2daebf url(images/overlay.png) repeat-x scroll 50% 50%;
+    */
+    background-color:rgb(118,175,72);
+    color:#fff;
+    font-weight:normal;
+}

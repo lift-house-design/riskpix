@@ -1,0 +1,32 @@
+/* stupid android fix */
+p{
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQIW2NkAAIAAAoAAggA9GkAAAAASUVORK5CYII=);
+}
+
+/* responsive css */
+@media all and (max-width:1200px) {
+}
+
+@media all and (max-width:1040px) {
+}
+
+@media all and (max-width:960px) {
+}
+
+@media all and (max-width:800px) {
+}
+
+@media all and (max-width:720px) {
+}
+
+@media all and (max-width:640px) {
+}
+
+@media all and (max-width:540px) {
+}
+
+@media all and (max-width:480px) {
+}
+
+@media all and (max-width:320px) {
+}

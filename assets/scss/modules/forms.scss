@@ -1,0 +1,16 @@
+%form {
+
+}
+
+%form-field {
+    background: green;
+    
+    > label {
+        background: blue;
+    }
+
+    > %field-container {
+        background: pink;
+    }
+
+}

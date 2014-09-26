@@ -1488,14 +1488,17 @@ input[type="reset"],
   visibility: visible; }
 
 .form-field {
-  visibility: visible; }
+  margin: 10px 0; }
   .form-field > label {
     display: block;
     margin-bottom: 5px; }
     .form-field > label:after {
       content: ":"; }
   .form-field > .field {
-    visibility: visible; }
+    display: block; }
+  .form-field > .hint {
+    margin-left: 10px;
+    display: block; }
 
 .form-buttons {
   margin: 20px 0 10px 0; }
@@ -1509,8 +1512,11 @@ input[type="reset"],
 form {
   text-align: left; }
 
-.form-field {
-  margin: 10px 0; }
+.form-field > .hint {
+  font-size: 11px; }
+
+.form-buttons {
+  text-align: center; }
 
 input[type="text"],
 input[type="password"],

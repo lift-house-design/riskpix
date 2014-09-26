@@ -11,7 +11,7 @@
 }
 
 %form-field {
-    visibility: visible;
+    margin: $spacing_sm 0;
 
     > label {
         display: block;
@@ -23,7 +23,12 @@
     }
 
     > %field-container {
-        visibility: visible;
+        display: block;
+    }
+
+    %hint-container {
+        margin-left: $spacing_sm;
+        display: block;
     }
 
 }

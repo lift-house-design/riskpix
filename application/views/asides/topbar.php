@@ -56,4 +56,4 @@
 	<? } ?>
 
 </div>
-<div class="spacer40"></div>
+<div class="spacer60"></div>

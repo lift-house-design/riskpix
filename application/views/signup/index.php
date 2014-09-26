@@ -43,7 +43,7 @@
                 <div class="form-field">
                     <?php echo form_label('Re-enter your email','field_email2') ?>
                     <div class="field">
-                        <?php echo form_input(array(
+                        <?php echo form_password(array(
                             'id'=>'field_email2',
                             'name'=>'email2',
                             'placeholder'=>'Re-enter Email',
@@ -54,7 +54,7 @@
                 <div class="form-field">
                     <?php echo form_label('Eight character password','field_password') ?>
                     <div class="field">
-                        <?php echo form_input(array(
+                        <?php echo form_password(array(
                             'id'=>'field_password',
                             'name'=>'password',
                             'placeholder'=>'Password',

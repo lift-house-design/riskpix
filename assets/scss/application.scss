@@ -1,11 +1,34 @@
 @import "dependencies/application";
 
+// Boilerplate dependencies
+@import "includes/vars";
+
 /**
  * MODULES
  */
 
-// Forms and form fields
+// Import forms and form fields
  @import "modules/forms";
+
+
+// Bind placeholders to elements
+input[type="text"],
+input[type="password"],
+select {
+    @extend %input;
+}
+
+ input[type="submit"],
+ input[type="button"],
+ input[type="reset"],
+ .button {
+    @extend %button;
+ }
+
+ .form,
+ form {
+    @extend %form;
+ }
 
  .form-field {
     @extend %form-field;
@@ -13,4 +36,32 @@
     > .field {
         @extend %field-container;
     }
+ }
+
+ .form-buttons {
+    @extend %form-buttons;
+ }
+
+// Form styling
+
+ %form {
+    text-align: left;
+ }
+
+ %form-field {
+    margin: $spacing_sm 0;
+
+    > label {
+        
+    }
+
+    > %field-container {
+
+    }
+
+ }
+
+ %input {
+    width: 100%;
+    display: block;
  }

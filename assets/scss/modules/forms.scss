@@ -1,16 +1,38 @@
 %form {
+    visibility: visible;
+}
 
+%input {
+    visibility: visible;
+}
+
+%button {
+    visibility: visible;
 }
 
 %form-field {
-    background: green;
-    
+    visibility: visible;
+
     > label {
-        background: blue;
+        display: block;
+        margin-bottom: $spacing_xs;
+
+        &:after {
+            content: ":";
+        }
     }
 
     > %field-container {
-        background: pink;
+        visibility: visible;
+    }
+
+}
+
+%form-buttons {
+    margin: $spacing_lg 0 $spacing_sm 0;
+
+    %button {
+        margin-right: $spacing_sm;
     }
 
 }

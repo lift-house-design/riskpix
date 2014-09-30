@@ -42,24 +42,21 @@ class Signup extends App_Controller
                 'rules'=>'trim|required|email|is_unique[user.email]',
             ),
             array(
-                'field'=>'email2',
+                'field'=>'confirm_email',
                 'label'=>'Confirm E-mail',
                 'rules'=>'trim|required|email|matches[email]',
             ),
             array(
                 'field'=>'password',
                 'label'=>'Password',
-                'rules'=>'trim|required',
+                'rules'=>'trim|required|sha1',
             ),
             array(
-                'field'=>'password2',
+                'field'=>'confirm_password',
                 'label'=>'Confirm Password',
-                'rules'=>'trim|required|matches[password]',
+                'rules'=>'trim|required|sha1|matches[password]',
             ),
         );
-
-        // http://benramsey.com/blog/2013/03/introducing-array-column-in-php-5-dot-5/
-        $data_keys=array_column($validation_rules,'field');
 
         // Load the form validation library
         $this->load->library('form_validation');
@@ -71,10 +68,24 @@ class Signup extends App_Controller
         {
             // Create a data structure to save the data
             $registration_data=array(
-                'step1'=>$this->input->post($data_keys),
+                'user'=>$this->input->post(array(
+                    'email',
+                    'password',
+                )),
+                'company'=>$this->input->post(array(
+                    'company'=>'c_name',
+                )),
+                'billing'=>array(),
             );
+
+            // Add first and last name as separate data fields
+            $name=explode(' ',$this->input->post('name'));
+            $registration_data['user']['first_name']=$name[0];
+            $registration_data['user']['last_name']=isset($name[1]) ? $name[1] : '';
+            
             // Save it to the session
             $this->session->set_userdata('registration',$registration_data);
+            
             // And proceed
             redirect('signup/step2');
         }
@@ -137,9 +148,6 @@ class Signup extends App_Controller
             ),
         );
 
-        // http://benramsey.com/blog/2013/03/introducing-array-column-in-php-5-dot-5/
-        $data_keys=array_column($validation_rules,'field');
-
         // Load the form validation library
         $this->load->library('form_validation');
         // And set validation rules
@@ -148,9 +156,20 @@ class Signup extends App_Controller
         if($this->form_validation->run()!==FALSE)
         {
             // Add the collected information to the data structure
-            $registration_data['step2']=$this->input->post($data_keys);
+            $registration_data['company']=array_merge($registration_data['company'],$this->input->post(array(
+                'address'=>'c_address',
+                'city'=>'c_city',
+                'state'=>'c_state',
+                'zip'=>'c_zipcode',
+                'phone'=>'c_phone_main',
+            )));
+            $registration_data['user']=array_merge($registration_data['user'],$this->input->post(array(
+                'mobile'=>'phone',
+            )));
+
             // Save it to the session
             $this->session->set_userdata('registration',$registration_data);
+            
             // And proceed
             redirect('signup/step3');
         }
@@ -160,74 +179,6 @@ class Signup extends App_Controller
             // Set a flag to display them in the view
             $this->data['has_errors']=TRUE;
         }
-
-
-
-        // echo 'We have data..?';
-        // var_dump($this->session->userdata('registration'));
-        // exit;
-/*
-        echo($this->session->flashdata('cid'));
-
-        //$this->load->library('session');
-        config_merge('meta',array(
-            'title' => 'Sign Up | RISKPIX',
-            'description' => 'Find out more about our custom underwriting solutions.'
-        ));
-
-        $rules = array(
-            array('address', 'required'),
-            array('city', 'required'),
-            array('state', 'required'),
-            array('zip', 'required'),
-            array('phone', 'required'),
-            array('phone', 'phone'),
-            array('mobile', 'phone')
-        );
-        //  $this->data['body_class'] = 'bg5';
-        $this->load->library('valid');
-
-        // did we get some datas?
-        $post = $this->input->post();
-        if(!$post) // nope
-        {
-            $this->valid->fill_empty($this->data, $rules);
-            return;
-        }
-        $err = $this->valid->validate($post, $rules);
-
-        if($err)
-        {
-            $this->errors[] = $err;
-            $this->data = array_merge($this->data, $post);
-            return;
-        } else {
-
-            //echo $this->session->flashdata('cid');
-
-            //save data
-            $cid = $this->session->flashdata('cid');
-            $this->company->update($cid,array(
-                'c_address'=>$post['address'],
-                'c_city'=>$post['city'],
-                'c_state'=>$post['state'],
-                'c_zipcode'=>$post['zip'],
-                'c_phone_main'=>$post['phone']
-            ));
-            $uid = $this->session->flashdata('uid');
-            $this->user->update($uid,array(
-                'phone'=>$post['phone'],
-            ));
-
-            //$this->valid->make_empty($this->data, $rules);
-            //$this->notifications[] = 'Your message has been received! You will be contacted shortly.';
-
-            echo($cid);
-
-            //redirect('/signup3');
-
-        }
-*/
     }
 
     public function step3()
@@ -245,8 +196,6 @@ class Signup extends App_Controller
             'description' => 'Find out more about our custom underwriting solutions.'
         ));
 
-        // $this->load->model('pricing');
-
         $this->data['body_class'] = 'bg5';
         $this->data['pricing_options']=$this->pricing->get_pricing_options();
 
@@ -263,9 +212,6 @@ class Signup extends App_Controller
             ),
         );
 
-        // http://benramsey.com/blog/2013/03/introducing-array-column-in-php-5-dot-5/
-        $data_keys=array_column($validation_rules,'field');
-
         // Load the form validation library
         $this->load->library('form_validation');
         // And set validation rules
@@ -274,7 +220,10 @@ class Signup extends App_Controller
         if($this->form_validation->run()!==FALSE)
         {
             // Add the collected information to the data structure
-            $registration_data['step3']=$this->input->post($data_keys);
+            $registration_data['billing']=array_merge($registration_data['billing'],$this->input->post(array(
+                'pricing',
+                'discount',
+            )));
             // Save it to the session
             $this->session->set_userdata('registration',$registration_data);
             // And proceed
@@ -286,64 +235,6 @@ class Signup extends App_Controller
             // Set a flag to display them in the view
             $this->data['has_errors']=TRUE;
         }
-/*
-        config_merge('meta',array(
-            'title' => 'Sign Up | RISKPIX',
-            'description' => 'Find out more about our custom underwriting solutions.'
-        ));
-
-        $rules = array(
-            array('pricing', 'required'),
-            array('terms', 'required'),
-            );
-
-        $this->data['pricing'] = $this->pricing->get_pricing();
-
-        //  $this->data['body_class'] = 'bg5';
-        $this->load->library('valid');
-
-        // did we get some datas?
-        $post = $this->input->post();
-        if(!$post) // nope
-        {
-            $this->valid->fill_empty($this->data, $rules);
-            return;
-        }
-        $err = $this->valid->validate($post, $rules);
-
-        if($err)
-        {
-            $this->errors[] = $err;
-            $this->data = array_merge($this->data, $post);
-            $this->data['pricing'] = $pricing;
-            return;
-        } else {
-
-            //save data
-            
-            // $this->company->update(1,array(
-            //     'c_address'=>$post['address'],
-            //     'c_city'=>$post['city'],
-            //     'c_state'=>$post['state'],
-            //     'c_zipcode'=>$post['zip'],
-            //     'c_phone_main'=>$post['phone']
-            // ));
-            // $this->user->update(42,array(
-            //     'phone'=>$post['phone'],
-            // ));
-            
-
-            $this->valid->make_empty($this->data, $rules);
-            //$this->notifications[] = 'Your message has been received! You will be contacted shortly.';
-
-            redirect('/signuppay');
-
-        }
-
-        $this->valid->make_empty($this->data, $rules);
-        //$this->notifications[] = 'Your message has been received! You will be contacted shortly.';
-        //redirect('/authentication/log_in');
-*/
     }
 
     public function confirm()
@@ -355,7 +246,7 @@ class Signup extends App_Controller
         {
             redirect('signup');
         }
-        var_dump($registration_data);
+        $this->data['registration_data']=$registration_data;
 /*
         $is_test_transaction = true;
         $stripe_public_key = 'pk_live_uKzioeuq4V96VGQDFkaEZcKj';

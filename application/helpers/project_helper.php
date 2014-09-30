@@ -173,6 +173,14 @@ if(!function_exists('send_sms'))
 	}
 }
 
+if(!function_exists('is_assoc_array'))
+{
+    function is_assoc_array($arr)
+    {
+        return is_array($arr) && count(array_filter(array_keys($arr),'is_string'));
+    }
+}
+
 /*
 | -------------------------------------------------------------------
 |  Third-party Helpers & Polyfills

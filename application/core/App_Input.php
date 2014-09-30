@@ -24,9 +24,14 @@ class App_Input extends CI_Input
             {
                 $values=array();
 
-                foreach($index as $key)
+                foreach($index as $old_key=>$new_key)
                 {
-                    $values[$key]=parent::post($key,$xss_clean);
+                    if(is_int($old_key))
+                    {
+                        $old_key=$new_key;
+                    }
+
+                    $values[$new_key]=parent::post($old_key,$xss_clean);
                 }
 
                 return $values;

@@ -7,7 +7,7 @@
             <div class="center540">
                 <h2 class="oleo c0">sign up - confirm</h2>
                 <?php var_dump($registration_data); ?>
-                <h3<>/h3>
+                <h3>account details</h3>
                 <div class="form-field">
                     <?php echo form_label('Company Name','field_company') ?>
                     <div class="field">

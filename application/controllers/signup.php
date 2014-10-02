@@ -49,12 +49,12 @@ class Signup extends App_Controller
             array(
                 'field'=>'password',
                 'label'=>'Password',
-                'rules'=>'trim|required|sha1',
+                'rules'=>'trim|required',
             ),
             array(
                 'field'=>'confirm_password',
                 'label'=>'Confirm Password',
-                'rules'=>'trim|required|sha1|matches[password]',
+                'rules'=>'trim|required|matches[password]',
             ),
         );
 
@@ -85,6 +85,7 @@ class Signup extends App_Controller
             
             // Save it to the session
             $this->session->set_userdata('registration',$registration_data);
+            $this->session->set_flashdata('previous_step',1);
             
             // And proceed
             redirect('signup/step2');
@@ -99,13 +100,16 @@ class Signup extends App_Controller
 
     public function step2()
     {
-        // Retrieve the previous step data
-        $registration_data=$this->session->userdata('registration');
         // Check that the previous step has been completed
-        if($registration_data===FALSE || empty($registration_data['step1']))
+        if( ($prev_step=$this->session->flashdata('previous_step')) && $prev_step >=1)
         {
             redirect('signup');
         }
+        
+        $this->session->keep_flashdata();
+
+        // Retrieve the previous step data
+        $registration_data=$this->session->userdata('registration');
 
         config_merge('meta',array(
             'title' => 'Sign Up | Step 2 | RISKPIX',
@@ -169,7 +173,8 @@ class Signup extends App_Controller
 
             // Save it to the session
             $this->session->set_userdata('registration',$registration_data);
-            
+            $this->session->set_flashdata('previous_step',2);
+
             // And proceed
             redirect('signup/step3');
         }
@@ -183,13 +188,16 @@ class Signup extends App_Controller
 
     public function step3()
     {
-        // Retrieve the previous step data
-        $registration_data=$this->session->userdata('registration');
         // Check that the previous step has been completed
-        if($registration_data===FALSE || empty($registration_data['step2']))
+        if($this->session->flashdata('previous_step')>=2)
         {
             redirect('signup');
         }
+        
+        $this->session->keep_flashdata();
+
+        // Retrieve the previous step data
+        $registration_data=$this->session->userdata('registration');
 
         config_merge('meta',array(
             'title' => 'Sign Up | Step 3 | RISKPIX',
@@ -224,8 +232,11 @@ class Signup extends App_Controller
                 'pricing',
                 'discount',
             )));
+
             // Save it to the session
             $this->session->set_userdata('registration',$registration_data);
+            $this->session->set_flashdata('previous_step',3);
+
             // And proceed
             redirect('signup/confirm');
         }
@@ -239,13 +250,17 @@ class Signup extends App_Controller
 
     public function confirm()
     {
-        // Retrieve the previous step data
-        $registration_data=$this->session->userdata('registration');
         // Check that the previous step has been completed
-        if($registration_data===FALSE || empty($registration_data['step3']))
+        if($this->session->flashdata('previous_step')>=3)
         {
             redirect('signup');
         }
+        
+        $this->session->keep_flashdata();
+
+        // Retrieve the previous step data
+        $registration_data=$this->session->userdata('registration');
+
         $this->data['registration_data']=$registration_data;
 /*
         $is_test_transaction = true;

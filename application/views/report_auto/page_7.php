@@ -1,6 +1,6 @@
 <div class="center-wrap">
-	<?/* <img src="/assets/img/insco_logo.png" alt="InsCo"/>
-	<img class="pull-center" src="/assets/img/mobile_logo.png" alt="<?= $site_name ?>"/> */?>
+	<?php /* <img src="/assets/img/insco_logo.png" alt="InsCo"/>
+	<img class="pull-center" src="/assets/img/mobile_logo.png" alt="<?php echo $site_name ?>"/> */?>
 
 </div>	
 <div class="pad40">

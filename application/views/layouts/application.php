@@ -11,29 +11,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- SEO Stuff -->
-    <title><?= $meta['title'] ?></title>
-    <meta name="description" content="<?= $meta['description'] ?>">
-    <meta name="keywords" content="<?= $meta['keywords'] ?>"/>
-	<meta name="copyright" content="<?= $copyright ?>"/>
+    <title><?php echo $meta['title'] ?></title>
+    <meta name="description" content="<?php echo $meta['description'] ?>">
+    <meta name="keywords" content="<?php echo $meta['keywords'] ?>"/>
+	<meta name="copyright" content="<?php echo $copyright ?>"/>
 
 	<!-- Social SEO Stuff -->
-	<meta property="og:title" content="<?= $meta['title'] ?>"/>
-	<meta property="og:description" content="<?= $meta['description'] ?>"/>
+	<meta property="og:title" content="<?php echo $meta['title'] ?>"/>
+	<meta property="og:description" content="<?php echo $meta['description'] ?>"/>
 	<meta property="og:type" content="Article"/>
-	<meta property="og:url" content="<?= $meta['url'] ?>"/>
-	<meta property="og:image" content="<?= $meta['image'] ?>"/>
-	<meta property="og:site_name" content="<?= $meta['title'] ?>"/>
+	<meta property="og:url" content="<?php echo $meta['url'] ?>"/>
+	<meta property="og:image" content="<?php echo $meta['image'] ?>"/>
+	<meta property="og:site_name" content="<?php echo $meta['title'] ?>"/>
 	<meta property="fb:admins" content=""/>
 	<meta name="twitter:card" content="summary"/>
-	<meta name="twitter:url" content="<?= $meta['url'] ?>"/>
-	<meta name="twitter:title" content="<?= $meta['title'] ?>"/>
-	<meta name="twitter:description" content="<?= $meta['description'] ?>"/>
-	<meta name="twitter:image" content="<?= $meta['image'] ?>"/>
-	<meta itemprop="name" content="<?= $meta['title'] ?>"/>
-	<meta itemprop="description" content="<?= $meta['description'] ?>"/>
-	<meta itemprop="image" content="<?= $meta['image'] ?>"/>
+	<meta name="twitter:url" content="<?php echo $meta['url'] ?>"/>
+	<meta name="twitter:title" content="<?php echo $meta['title'] ?>"/>
+	<meta name="twitter:description" content="<?php echo $meta['description'] ?>"/>
+	<meta name="twitter:image" content="<?php echo $meta['image'] ?>"/>
+	<meta itemprop="name" content="<?php echo $meta['title'] ?>"/>
+	<meta itemprop="description" content="<?php echo $meta['description'] ?>"/>
+	<meta itemprop="image" content="<?php echo $meta['image'] ?>"/>
 
-	<?/*
+	<?php /*
 	<!-- Favicons -->
 	<link rel="shortcut icon" href="/assets/favicons/favicon.ico">
   <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
@@ -54,8 +54,8 @@
 	*/?>
 
 	<!-- assets -->
-  <?= css($css) ?>
-	<?= js($js) ?>
+  <?php echo css($css) ?>
+	<?php echo js($js) ?>
 
 	<!-- Thanks, Bill -->
 	<!--[if lt IE 9]>
@@ -63,18 +63,18 @@
 	<![endif]-->
 </head>
 <body>
-  	<?= $yield_topbar ?>
-  	<?= empty($yield_progress) ? '' : $yield_progress ?>
-  	<?= empty($yield_banner) ? '' : $yield_banner ?>
-  	<?= empty($yield_home_text) ? '' : $yield_home_text ?>
+  	<?php echo $yield_topbar ?>
+  	<?php echo empty($yield_progress) ? '' : $yield_progress ?>
+  	<?php echo empty($yield_banner) ? '' : $yield_banner ?>
+  	<?php echo empty($yield_home_text) ? '' : $yield_home_text ?>
   	<div class="center-wrap">
-  		<?= $yield_notifications ?>
-  		<?= $yield ?>
+  		<?php echo $yield_notifications ?>
+  		<?php echo $yield ?>
   	</div>
-  	<?= $yield_analytics ?>
-  	<?= empty($yield_claim_number) ? '' : $yield_claim_number ?>
-  	<?= empty($yield_seo) ? '' : $yield_seo ?>
-  	<?= $yield_footer ?>
+  	<?php echo $yield_analytics ?>
+  	<?php echo empty($yield_claim_number) ? '' : $yield_claim_number ?>
+  	<?php echo empty($yield_seo) ? '' : $yield_seo ?>
+  	<?php echo $yield_footer ?>
 
 
 
@@ -83,8 +83,8 @@
   		<table><td>checking VIN...</td></table>
   	</div>
   	<img class="overlay-loading" src="/assets/img/loading.gif"/>
-  	<? /* Should add seo aside from slang.org */ ?>
+  	<?php /* Should add seo aside from slang.org */ ?>
 
-    <?= $yield_bottombar ?>
+    <?php echo $yield_bottombar ?>
 </body>
 </html>

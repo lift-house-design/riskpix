@@ -1,5 +1,4 @@
-<?
-
+<?php 
 /* For messing with XML data */
 class Xml
 {

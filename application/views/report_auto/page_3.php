@@ -30,7 +30,7 @@ Please use the numbers 1 or 0 instead.
 </b>
 <div class="spacer20"></div>
 <form method="post">
-	<input type="text" name="VIN" value="<?= $claim['vin'] ?>" placeholder="Manually enter your VIN" value="<?= $claim['vin'] ?>"/><br/>
+	<input type="text" name="VIN" value="<?php echo $claim['vin'] ?>" placeholder="Manually enter your VIN" value="<?php echo $claim['vin'] ?>"/><br/>
 	<button id="check-VIN" type="button">Verify</button>
 </form>
 

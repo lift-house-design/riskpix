@@ -2,7 +2,7 @@ Claim Created!<br/>
 <br/>
 Send the link below to the vehicle owner:<br/>
 <br/>
-<input class="copy" value="<?= $report_url ?>" onclick="this.value='<?= $report_url ?>';this.select()" onkeydown="this.value='<?= $report_url ?>';this.select()" onchange="this.value='<?= $report_url ?>';this.select()"/>
+<input class="copy" value="<?php echo $report_url ?>" onclick="this.value='<?php echo $report_url ?>';this.select()" onkeydown="this.value='<?php echo $report_url ?>';this.select()" onchange="this.value='<?php echo $report_url ?>';this.select()"/>
 <form>
 <button type="button" class="sms">Text to Vehicle Owner</button>
 <br/>
@@ -11,17 +11,17 @@ Send the link below to the vehicle owner:<br/>
 <script>
 $(function(){
 	$('input').select();
-	<? if(empty($claim['phone'])){ ?>
+	<?php if(empty($claim['phone'])){ ?>
 		$('button.sms').attr('disabled','disabled');
-	<? } ?>
-	<? if(empty($claim['email'])){ ?>
+	<?php } ?>
+	<?php if(empty($claim['email'])){ ?>
 		$('button.email').attr('disabled','disabled');
-	<? } ?>
+	<?php } ?>
 });
 $('button.sms').click(function(e)
 {
 	$.get(
-		'/claim/text_message/<?= $hash ?>',
+		'/claim/text_message/<?php echo $hash ?>',
 		{},
 		function(data)
 		{
@@ -37,7 +37,7 @@ $('button.sms').click(function(e)
 $('button.email').click(function(e)
 {
 	$.get(
-		'/claim/email_message/<?= $hash ?>',
+		'/claim/email_message/<?php echo $hash ?>',
 		{},
 		function(data)
 		{

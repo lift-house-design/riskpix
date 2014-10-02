@@ -1,4 +1,4 @@
-<? /*
+<?php /*
 <div class="gray1bg">
 	<div class="spacer5 whitebg"></div>
 	<div class="center-wrap pad20">

@@ -1,10 +1,10 @@
-<? if(!empty($notifications)){ ?>
+<?php if(!empty($notifications)){ ?>
 	<div class="notifications">
-		<?= implode('<br/>',$notifications) ?></li>
+		<?php echo implode('<br/>',$notifications) ?></li>
 	</div>
-<? } ?>
-<? if(!empty($errors)){ ?>
+<?php } ?>
+<?php if(!empty($errors)){ ?>
 	<div class="errors">
-		<?= implode('<br/>',$errors) ?>
+		<?php echo implode('<br/>',$errors) ?>
 	</div>
-<? } ?>
+<?php } ?>

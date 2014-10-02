@@ -1,20 +1,20 @@
-<? /* use $refresh to reload a particular image */ ?>
+<?php /* use $refresh to reload a particular image */ ?>
 <h1>Your Photos</h1>
 Tap a thumbnail to retake a photo.
 <br/>
 <div>
-	<? foreach($photos as $p){ ?>
-		<? $page = $p['photo_num']; ?>
-		<? $url = $p['url']; ?>
+	<?php foreach($photos as $p){ ?>
+		<?php $page = $p['photo_num']; ?>
+		<?php $url = $p['url']; ?>
 		<div class="w33pc pad2 align-center">
-			<a href="/photo/<?= $page ?>/1">
-				<img class="full" src="<?= $p['url_thumb'] ?><?= $page == $refresh ? '?'.time() : '' ?>"/>
+			<a href="/photo/<?php echo $page ?>/1">
+				<img class="full" src="<?php echo $p['url_thumb'] ?><?php echo $page == $refresh ? '?'.time() : '' ?>"/>
 			</a>
 		</div>
-		<? if($page == 3){ ?>
+		<?php if($page == 3){ ?>
 			</div><div>
-		<? } ?>
-	<? } ?>
+		<?php } ?>
+	<?php } ?>
 </div>
 <br/>
 <form method="post">

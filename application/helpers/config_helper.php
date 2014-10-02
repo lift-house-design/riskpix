@@ -1,5 +1,4 @@
-<?
-function config_merge($array,$data){
+<?php function config_merge($array,$data){
 	$ci =& get_instance();
 	$ci->config->set_item(
 		$array,

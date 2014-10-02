@@ -1,6 +1,6 @@
 sample photos and tips
 <div class="spacer10"></div>
-<?/*
+<?php /*
 <div class="w300 pull-center pad4 visible">
 	<ul class="tip-slider">
 		<li><img src="/assets/img/capture_it_all.jpg"  title="Capture all of the damage"/></li>

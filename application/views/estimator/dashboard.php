@@ -1,6 +1,6 @@
-<?/*<pre><? var_dump($claims); ?></pre>*/?>
+<?php /*<pre><?php var_dump($claims); ?></pre>*/?>
 <h2>Your Reports</h2>
-<?= html_table(
+<?php echo html_table(
 	$claims_table, 
 	array('Sortable Date','Date','Policy Quote Number','Status','Action'), 
 	'id="claims-table"'

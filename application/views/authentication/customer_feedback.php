@@ -1,16 +1,16 @@
-<?/*<h1>Welcome to TableQuick!</h1>
+<?php /*<h1>Welcome to TableQuick!</h1>
 <p>Restaurant ID: <?=$user_id?></p>
 <p>Table Number: <?=$table_number?></p>
 <p>Server Name: <?=$server_name?></p>
 */?>
-<? if(isset($comment)){ ?>
+<?php if(isset($comment)){ ?>
 	<div style="width:100%;text-align:center">
 		<h2>Thank you for your input!</h2>
 		<h3>Your comments ensure that we provide the best service possible.</h3>
 		<p><?=$comment?></p>
 	</div>
-	<? return; ?>
-<? }else{ ?>
+	<?php return; ?>
+<?php }else{ ?>
 	<form id="feedback-form" action="/site/customer_feedback" method="post" style="width:100%;text-align:center">
 		<h1>Comments <?=($server_name ? "regarding $server_name" : "")?></h1>
 		<div id="feedback-errors"></div>
@@ -53,4 +53,4 @@
 		});
 	});
 	</script>
-<? } ?>
+<?php } ?>

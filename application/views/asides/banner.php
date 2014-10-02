@@ -1,5 +1,5 @@
 
-<?/*
+<?php /*
 <div class="banner">
 	<img src="/assets/img/send.png" alt=""/>
 	<div class="title">

@@ -1,5 +1,4 @@
-<?
-class Upload
+<?php class Upload
 {
     function img_to_png($srcFile, $maxSize = 1000, $smoothness=10)
     {  

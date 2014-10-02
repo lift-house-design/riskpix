@@ -1,3 +1,3 @@
 <div>
-	<?= $content ?>
+	<?php echo $content ?>
 </div>

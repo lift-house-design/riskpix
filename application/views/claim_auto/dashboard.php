@@ -1,5 +1,5 @@
-<?/*<pre><? var_dump($claims); ?></pre>*/?>
-<?= html_table(
+<?php /*<pre><?php var_dump($claims); ?></pre>*/?>
+<?php echo html_table(
 	$claims_table, 
 	array('Insurer','Claim Number','Status','Name','Contact','Action'), 
 	'id="claims-table"'

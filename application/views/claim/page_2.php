@@ -9,21 +9,21 @@
 <div class="spacer20"></div>
 Copy URL for email
 <div class="spacer20"></div>
-<input class="copy" value="<?= $report_url ?>" onclick="this.value='<?= $report_url ?>';this.select()" onkeydown="this.value='<?= $report_url ?>';this.select()" onchange="this.value='<?= $report_url ?>';this.select()"/>
+<input class="copy" value="<?php echo $report_url ?>" onclick="this.value='<?php echo $report_url ?>';this.select()" onkeydown="this.value='<?php echo $report_url ?>';this.select()" onchange="this.value='<?php echo $report_url ?>';this.select()"/>
 <script>
 $(function(){
 	$('input').select();
-	<? if(empty($claim['phone'])){ ?>
+	<?php if(empty($claim['phone'])){ ?>
 		$('button.sms').attr('disabled','disabled');
-	<? } ?>
-	<? if(empty($claim['email'])){ ?>
+	<?php } ?>
+	<?php if(empty($claim['email'])){ ?>
 		$('button.email').attr('disabled','disabled');
-	<? } ?>
+	<?php } ?>
 });
 $('button.sms').click(function(e)
 {
 	$.get(
-		'/claim/text_message/<?= $hash ?>',
+		'/claim/text_message/<?php echo $hash ?>',
 		{},
 		function(data)
 		{
@@ -39,7 +39,7 @@ $('button.sms').click(function(e)
 $('button.email').click(function(e)
 {
 	$.get(
-		'/claim/email_message/<?= $hash ?>',
+		'/claim/email_message/<?php echo $hash ?>',
 		{},
 		function(data)
 		{
@@ -52,14 +52,14 @@ $('button.email').click(function(e)
 		'json'
 	);
 });
-<?/*
+<?php /*
 $('button.estimator').click(function(e)
 {
 	var estimator = $('[name="estimator"]:checked').val();
 	if(!estimator)
 		return;
 	$.get(
-		'/claim/set_estimator/<?= $hash ?>/'+estimator,
+		'/claim/set_estimator/<?php echo $hash ?>/'+estimator,
 		{},
 		function(data)
 		{

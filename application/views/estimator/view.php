@@ -3,83 +3,83 @@
 	<h3>Report Information</h3>
 	<div>
 		<div class="vehicle-data-table">
-			<? foreach($fields_we_care_about as $i => $label){ ?>	
-				<? if(empty($claim[$i])) continue; ?>
+			<?php foreach($fields_we_care_about as $i => $label){ ?>	
+				<?php if(empty($claim[$i])) continue; ?>
 				<div class="row">
-					<div class="l"><?= $label ?></div>
-					<div class="r"><?= $claim[$i] ?></div>
+					<div class="l"><?php echo $label ?></div>
+					<div class="r"><?php echo $claim[$i] ?></div>
 				</div>
-			<? } ?>
+			<?php } ?>
 		</div>
 	</div>
 
 	<h3>Home Information</h3>
 	<div>
 		<div class="vehicle-data-table">
-			<? foreach($fields_we_care_about as $i => $label){ ?>	
-				<? if(empty($claim[$i])) continue; ?>
+			<?php foreach($fields_we_care_about as $i => $label){ ?>	
+				<?php if(empty($claim[$i])) continue; ?>
 				<div class="row">
-					<div class="l"><?= $label ?></div>
-					<div class="r"><?= $claim[$i] ?></div>
+					<div class="l"><?php echo $label ?></div>
+					<div class="r"><?php echo $claim[$i] ?></div>
 				</div>
-			<? } ?>
-			<? if(!empty($home_data)){ ?>
-				<? foreach($home_fields_we_care_about as $i => $label){ ?>	
-					<? if(empty($home_data[$i])) continue; ?>
+			<?php } ?>
+			<?php if(!empty($home_data)){ ?>
+				<?php foreach($home_fields_we_care_about as $i => $label){ ?>	
+					<?php if(empty($home_data[$i])) continue; ?>
 					<div class="row">
-						<div class="l"><?= $label ?></div>
-						<div class="r"><?= $home_data[$i] ?></div>
+						<div class="l"><?php echo $label ?></div>
+						<div class="r"><?php echo $home_data[$i] ?></div>
 					</div>
-				<? } ?>
-			<? } ?>
+				<?php } ?>
+			<?php } ?>
 		</div>
 	</div>
 
-	<? if(!empty($photo_coordinates)){ ?>
+	<?php if(!empty($photo_coordinates)){ ?>
 		<h3 id="map-title">Map</h3>
 		<div>
 			<div class="spacer20"></div>
 			<b>Photo Location</b>
 			<div class="spacer20"></div>
-			<iframe id="gmap" width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?t=m&amp;q=loc:<?= $photo_coordinates['lat'] ?>+<?= $photo_coordinates['lon'] ?>&amp;ie=UTF8&amp;z=12&amp;ll=<?= $photo_coordinates['lat'] ?>,<?= $photo_coordinates['lon'] ?>&amp;output=embed"></iframe>
+			<iframe id="gmap" width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?t=m&amp;q=loc:<?php echo $photo_coordinates['lat'] ?>+<?php echo $photo_coordinates['lon'] ?>&amp;ie=UTF8&amp;z=12&amp;ll=<?php echo $photo_coordinates['lat'] ?>,<?php echo $photo_coordinates['lon'] ?>&amp;output=embed"></iframe>
 			<div class="spacer40"></div>
 		</div>
-	<? } ?>
+	<?php } ?>
 
-	<? if(!empty($photos)){ ?>
+	<?php if(!empty($photos)){ ?>
 		<h3 id="photo-title">Photos</h3>
 		<div>
 			<div class="slick">
-				<? foreach($photos as $p){ ?>
+				<?php foreach($photos as $p){ ?>
 					<div>
-						<img class="full" src="<?= $p['url'] ?>"/>
+						<img class="full" src="<?php echo $p['url'] ?>"/>
 					</div>
-				<? } ?>
+				<?php } ?>
 			</div>
 		</div>
-	<? } ?>
+	<?php } ?>
 
 	<h3>Replacement Cost Estimate</h3>
 	<div>
-		<? if($claim['status'] == 'Pending Estimate'){ ?>
+		<?php if($claim['status'] == 'Pending Estimate'){ ?>
 			<div class="spacer20"></div>
 			<input id="replacement-cost" placeholder="$123,456,789.00"/>
 			<br/>
 			<button id="replacement-cost-submit">Submit</button>
 			<div class="spacer20"></div>
-		<? }elseif($claim['replacement_cost'] > 0){ ?>
+		<?php }elseif($claim['replacement_cost'] > 0){ ?>
 			<div class="spacer20"></div>
-			<b>$<?= $claim['replacement_cost'] ?></b>
+			<b>$<?php echo $claim['replacement_cost'] ?></b>
 			<div class="spacer20"></div>
-		<? }elseif($claim['status'] == 'Complete'){ ?>
+		<?php }elseif($claim['status'] == 'Complete'){ ?>
 			<div class="spacer20"></div>
 			<b>No estimate required.</b>
 			<div class="spacer20"></div>
-		<? }else{ ?>
+		<?php }else{ ?>
 			<div class="spacer20"></div>
 			<b>Waiting for the homeowner to complete their report.</b>
 			<div class="spacer20"></div>
-		<? } ?>
+		<?php } ?>
 	</div>
 </div>
 <div id="replacement-confirm" title="Confirm Your Estimate">
@@ -143,7 +143,7 @@ function replacement_cost_submit(cost)
 {
 	show_loading();
 	$.post(
-		"/estimator/set_estimate/<?= $claim['hash'] ?>",
+		"/estimator/set_estimate/<?php echo $claim['hash'] ?>",
 		{ cost: cost },
 		function(data){
 			hide_loading();

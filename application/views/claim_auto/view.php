@@ -1,17 +1,17 @@
-<?/* var_dump($claim); */?>
+<?php /* var_dump($claim); */?>
 <div class="spacer20"></div>
 <div class="vehicle-data-table">
-	<? foreach($claim as $i => $v){ ?>	
-		<? if(!$v) continue; ?>
+	<?php foreach($claim as $i => $v){ ?>	
+		<?php if(!$v) continue; ?>
 		<div class="row">
-			<div class="l"><?= $i ?></div>
-			<div class="r"><?= $v ?></div>
+			<div class="l"><?php echo $i ?></div>
+			<div class="r"><?php echo $v ?></div>
 		</div>
-	<? } ?>
+	<?php } ?>
 </div>
 <div class="spacer20"></div>
 <div class="photos">
-	<? foreach($photos as $p){ ?>
-		<img class="full" src="<?= $p['url'] ?>"/><br/>
-	<? } ?>
+	<?php foreach($photos as $p){ ?>
+		<img class="full" src="<?php echo $p['url'] ?>"/><br/>
+	<?php } ?>
 </div>

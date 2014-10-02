@@ -1,16 +1,16 @@
 <div class="instructions">
 	<div class="spacer30"></div>
 	<div class="text-block align-center w300 pull-center visible">
-		<b>Photo <?= $photo_page ?> of <?= $photo_count ?></b>
+		<b>Photo <?php echo $photo_page ?> of <?php echo $photo_count ?></b>
 		<div class="spacer5"></div>
-		<?= $photo_message ?>
+		<?php echo $photo_message ?>
 	</div>
 	<div class="spacer30"></div>
 </div>
 <div class="w300 pull-center visible">
 	<input type="file" name="image" accept="image/*;capture=camera" capture style="position:absolute;top:4px;left:20px;height:10px;width:10px"/>
 	<input type="button" class="take-photo" value="Take Photo"/>
-	<form method="post" action="<?= $action ?>" class="retake hide">
+	<form method="post" action="<?php echo $action ?>" class="retake hide">
 		<div class="w300 pull-center">
 			<input type="hidden" name="photo"/>
 			<input type="hidden" name="exif"/>
@@ -25,7 +25,7 @@
 </div>
 
 <div class="spacer10"></div>
-<?/*img class="preview hide w100pc" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="preview"/*/?>
+<?php /*img class="preview hide w100pc" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="preview"/*/?>
 
 <script>
 	var photo_exif = {};

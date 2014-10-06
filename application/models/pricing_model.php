@@ -25,7 +25,7 @@ class Pricing_model extends App_Model
     public function get_rollover_expirations($date_format='m/d/Y')
     {
         $expirations=array();
-        $rows=$this->get_many_by('p_expiration_date >= NOW()');
+        $rows=$this->get_many_by('p_roll_over = "roll" AND p_expiration_date >= NOW()');
 
         foreach($rows as $row)
         {

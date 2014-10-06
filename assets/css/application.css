@@ -1544,4 +1544,6 @@ select {
   font-weight: bold;
   font-style: italic; }
 
-/*# sourceMappingURL=application.css.map */
+#discount-code {
+  font-weight: bold;
+  color: #f66; }

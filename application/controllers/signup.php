@@ -133,7 +133,7 @@ class Signup extends App_Controller
                 'company'=>$this->input->post(array(
                     'company'=>'c_name',
                 )),
-                'billing'=>array(),
+                'plan'=>array(),
             );
 
             // Add first and last name as separate data fields
@@ -282,31 +282,59 @@ class Signup extends App_Controller
             // Retrieve the previous step data
             $registration_data=$this->session->userdata('registration');
 
-            //if($pricing_id=$this->input->post('pricing') && )
-            if($pricing_id=$this->input->post('pricing'))
-            {
-                $registration_data['pricing']=$this->pricing->get($pricing_id);
-            }
-            else
-            {
-                $registration_data['pricing']=array();
-            }
-
             if($discount_code=$this->input->post('discount'))
             {
-                $registration_data['discount']=$this->discount->get_by_code($discount_code);
+                $discount=$this->discount->get_by_code($discount_code);
             }
             else
             {
-                $registration_data['discount']=array();
+                $discount=array();
             }
 
-            // Save it to the session
-            $this->session->set_userdata('registration',$registration_data);
-            $this->session->set_userdata('registration_step',4);
+            if($pricing_id=$this->input->post('pricing'))
+            {
+                $pricing=$this->pricing->get($pricing_id);
+            }
+            else
+            {
+                $pricing=array();
+            }
 
-            // And proceed
-            redirect('signup/confirm');
+            if(!empty($discount))
+            {
+                $registration_data['plan']=array(
+                    'volume'=>$discount['dc_volume'],
+                    'price'=>$discount['dc_price'],
+                    'rollover'=>FALSE,
+                    'rollover_months'=>NULL,
+                    'discount'=>$discount['dc_code'],
+                );
+            }
+            elseif(!empty($pricing))
+            {
+                $registration_data['plan']=array(
+                    'volume'=>$pricing['p_volume'],
+                    'price'=>$pricing['p_price'],
+                    'rollover'=>($pricing['p_roll_over']=='roll'),
+                    'rollover_months'=>$pricing['p_roll_months'],
+                    'discount'=>FALSE,
+                );
+            }
+
+            if(!empty($registration_data['plan']))
+            {
+                // Save it to the session
+                $this->session->set_userdata('registration',$registration_data);
+                $this->session->set_userdata('registration_step',4);
+
+                // And proceed
+                redirect('signup/confirm');
+            }
+            else
+            {
+                $this->data['has_errors']=TRUE;
+                $this->form_validation->set_error('An unknown error occurred determining your plan.');
+            }
         }
         // If the form was submitted with errors
         elseif($this->input->post())
@@ -340,12 +368,13 @@ class Signup extends App_Controller
         // Retrieve the previous step data
         $registration_data=$this->session->userdata('registration');
 
-        if(isset($_GET['export']))
-        {
-            var_export($registration_data); exit;
-        }
+        $user_data=$registration_data['user'];
+        $company_data=$registration_data['company'];
+        $plan_data=$registration_data['plan'];
 
-        $this->data['registration_data']=$registration_data;
+        $this->data['user_data']=$user_data;
+        $this->data['company_data']=$company_data;
+        $this->data['plan_data']=$plan_data;
 /*
         $is_test_transaction = true;
         $stripe_public_key = 'pk_live_uKzioeuq4V96VGQDFkaEZcKj';

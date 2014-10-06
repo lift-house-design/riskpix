@@ -8,11 +8,11 @@
         <h2 class="oleo c0">sign up - step 3 of 4</h2>
         <?php echo form_open() ?>
         <div class="form-field">
-            <?php echo form_label('Choose a Monthly Plan','field-pricing') ?>
+            <?php echo form_label('Choose a Pricing Plan','field-pricing') ?>
             <div class="field">
                 <?php echo form_dropdown('pricing', $pricing_options, set_value('pricing'),'id="field-pricing"') ?>
             </div>
-            <div class="hint">
+            <div id="rollover-hint" class="hint">
                 Unused monthly reports will rollover to next month.<br />
                 Unused monthly reports expire on: <span id="rollover-expiration"></span>.
             </div>
@@ -45,7 +45,15 @@
                 var selected=$(this).val(),
                     expiration=rollover_expirations[selected];
 
-                $('#rollover-expiration').html(expiration);
+                if(expiration)
+                {
+                    $('#rollover-hint').show();
+                    $('#rollover-expiration').html(expiration);  
+                }
+                else
+                {
+                    $('#rollover-hint').hide();
+                }                
             })
             .change();
     });

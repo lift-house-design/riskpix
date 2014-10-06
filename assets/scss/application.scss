@@ -103,8 +103,13 @@ select {
  
  // Sign Up
 
- // Sign Up - Step 3
+ // Sign Up - Step 3, Confirm
  #rollover-expiration {
     font-weight: bold;
     font-style: italic;
+ }
+// Sign Up - Confirm
+ #discount-code {
+    font-weight: bold;
+    color: #f66;
  }

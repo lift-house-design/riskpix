@@ -4,6 +4,17 @@
 @import "includes/vars";
 
 /**
+ * BASE
+ */
+
+.sub-heading {
+    font-family: 'Oleo',cursive;
+    color: #999;
+    font-weight: normal;
+    margin-bottom: 0;
+}
+
+/**
  * MODULES
  */
 
@@ -37,6 +48,10 @@ select {
         @extend %field-container;
     }
 
+    > .value {
+        @extend %value-container;
+    }
+
     > .hint {
         @extend %hint-container;
     }
@@ -63,6 +78,10 @@ select {
 
     }
 
+    > %value-container {
+        font-weight: bold;
+    }
+
     > %hint-container {
         font-size: 11px;
     }
@@ -76,4 +95,16 @@ select {
  %input {
     width: 100%;
     display: block;
+ }
+
+ /**
+  * PAGES
+  */
+ 
+ // Sign Up
+
+ // Sign Up - Step 3
+ #rollover-expiration {
+    font-weight: bold;
+    font-style: italic;
  }

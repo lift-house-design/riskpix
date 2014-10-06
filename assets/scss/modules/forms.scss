@@ -26,6 +26,10 @@
         display: block;
     }
 
+    > %value-container {
+        display: block;
+    }
+
     %hint-container {
         margin-left: $spacing_sm;
         display: block;

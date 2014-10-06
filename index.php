@@ -32,7 +32,7 @@
  * By default development will show errors but testing and live will hide them.
  */
 
-if (defined('ENVIRONMENT'))
+/*if (defined('ENVIRONMENT'))
 {
 	switch (ENVIRONMENT)
 	{
@@ -48,7 +48,9 @@ if (defined('ENVIRONMENT'))
 		default:
 			exit('The application environment is not set correctly.');
 	}
-}
+}*/
+
+error_reporting(E_ALL);
 
 /*
  *---------------------------------------------------------------

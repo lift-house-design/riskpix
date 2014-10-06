@@ -8,10 +8,10 @@
         <h2 class="oleo c0">sign up - step 2 of 4</h2>
         <?php echo form_open() ?>
         <div class="form-field">
-            <?php echo form_label('Billing Address','field_address') ?>
+            <?php echo form_label('Billing Address','field-address') ?>
             <div class="field">
                 <?php echo form_input(array(
-                    'id'=>'field_address',
+                    'id'=>'field-address',
                     'name'=>'address',
                     'placeholder'=>'Street Address',
                     'value'=>set_value('address'),
@@ -19,10 +19,10 @@
             </div>
         </div>
         <div class="form-field">
-            <?php echo form_label('City','field_city') ?>
+            <?php echo form_label('City','field-city') ?>
             <div class="field">
                 <?php echo form_input(array(
-                    'id'=>'field_city',
+                    'id'=>'field-city',
                     'name'=>'city',
                     'placeholder'=>'City',
                     'value'=>set_value('city'),
@@ -30,16 +30,16 @@
             </div>
         </div>
         <div class="form-field">
-            <?php echo form_label('State','field_state') ?>
+            <?php echo form_label('State','field-state') ?>
             <div class="field">
                 <?php echo form_dropdown('state',$states,set_value('state')) ?>
             </div>
         </div>
         <div class="form-field">
-            <?php echo form_label('Zip Code','field_zip') ?>
+            <?php echo form_label('Zip Code','field-zip') ?>
             <div class="field">
                 <?php echo form_input(array(
-                    'id'=>'field_zip',
+                    'id'=>'field-zip',
                     'name'=>'zip',
                     'placeholder'=>'Zip Code',
                     'value'=>set_value('zip'),
@@ -47,10 +47,10 @@
             </div>
         </div>
         <div class="form-field">
-            <?php echo form_label('Company Phone','field_phone') ?>
+            <?php echo form_label('Company Phone','field-phone') ?>
             <div class="field">
                 <?php echo form_input(array(
-                    'id'=>'field_phone',
+                    'id'=>'field-phone',
                     'name'=>'phone',
                     'placeholder'=>'Company Phone',
                     'value'=>set_value('phone'),
@@ -58,10 +58,10 @@
             </div>
         </div>
         <div class="form-field">
-            <?php echo form_label('Mobile Phone','field_mobile') ?>
+            <?php echo form_label('Mobile Phone','field-mobile') ?>
             <div class="field">
                 <?php echo form_input(array(
-                    'id'=>'field_mobile',
+                    'id'=>'field-mobile',
                     'name'=>'mobile',
                     'placeholder'=>'Mobile Phone',
                     'value'=>set_value('mobile'),

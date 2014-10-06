@@ -15,9 +15,36 @@ class Site extends App_Controller
 		$this->load->library('session');
 	}
 
-	public function debug()
+	public function debug($what,$debug_fn='var_dump')
 	{
-		var_dump($_SERVER['HTTP_HOST'],ENVIRONMENT);
+		$this->view=FALSE;
+
+		$debug_vars=array();
+
+		foreach(explode(',',$what) as $what_item)
+		{
+			switch($what)
+			{
+				case 'env':
+				case 'environment':
+					$debug_vars['ENVIRONMENT']=ENVIRONMENT;
+				case 'sess':
+				case 'session':
+					$debug_vars['SESSION']=$this->session->all_userdata();
+				case 'srv':
+				case 'server':
+					$debug_vars['SERVER']=$_SERVER;
+			}
+		}
+
+		if(!function_exists($debug_fn))
+		{
+			$debug_fn='var_dump';
+		}
+
+		$this->load->library('output');
+		$this->output->set_content_type('plain/text');
+		echo $debug_fn($debug_vars);
 	}
 
 	/* Ad hoc pages */

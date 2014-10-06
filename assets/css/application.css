@@ -1470,6 +1470,15 @@ textarea.placeholder {
   padding: 0 20px; }
 
 /**
+ * BASE
+ */
+.sub-heading {
+  font-family: 'Oleo',cursive;
+  color: #999;
+  font-weight: normal;
+  margin-bottom: 0; }
+
+/**
  * MODULES
  */
 .form,
@@ -1496,6 +1505,8 @@ input[type="reset"],
       content: ":"; }
   .form-field > .field {
     display: block; }
+  .form-field > .value {
+    display: block; }
   .form-field > .hint {
     margin-left: 10px;
     display: block; }
@@ -1512,6 +1523,8 @@ input[type="reset"],
 form {
   text-align: left; }
 
+.form-field > .value {
+  font-weight: bold; }
 .form-field > .hint {
   font-size: 11px; }
 
@@ -1523,3 +1536,12 @@ input[type="password"],
 select {
   width: 100%;
   display: block; }
+
+/**
+ * PAGES
+ */
+#rollover-expiration {
+  font-weight: bold;
+  font-style: italic; }
+
+/*# sourceMappingURL=application.css.map */

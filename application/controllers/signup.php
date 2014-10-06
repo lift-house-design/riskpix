@@ -6,13 +6,71 @@
  */
 class Signup extends App_Controller
 {
+    // private $_form_fill=array(
+    //     'index'=>array(
+    //         'company'=>'Nick Niebaum Enterprises',
+    //         'name'=>'Nick Niebaum',
+    //         'email'=>'nickniebaum@gmail.com',
+    //         'confirm_email'=>'nickniebaum@gmail.com',
+    //         'password'=>'password',
+    //         'confirm_password'=>'password',
+    //     ),
+    //     'step2'=>array(
+    //         'address'=>'1723 17th St., Apt. A',
+    //         'city'=>'Nitro',
+    //         'state'=>'WV',
+    //         'zip'=>'25143',
+    //         'phone'=>'(304) 871-6066',
+    //         'mobile'=>'(304) 866-000',
+    //     ),
+    //     'step3'=>array(
+    //         'pricing'=>'3',
+    //         'discount'=>'DISC333',
+    //     ),
+    // );
+
     public function __construct()
     {
-        $this->models=array_merge($this->models,array('pricing'));
+        $this->models[]='pricing';
+        $this->models[]='discount';
         parent::__construct();
         $this->load->library('session');
         $this->data['has_errors']=FALSE;
     }
+
+    // public function start_testing($step=1)
+    // {
+    //     $signup_pages=array(
+    //         'signup',
+    //         'signup/step2',
+    //         'signup/step3',
+    //         'signup/confirm',
+    //     );
+
+    //     $registration_data=array(
+    //             'user' => array(
+    //                 'email' => 'nickniebaum@gmail.com',
+    //                 'password' => 'password',
+    //                 'first_name' => 'Nick',
+    //                 'last_name' => 'Niebaum',
+    //                 'phone' => '(304) 871-6067',
+    //             ),
+    //             'company' => array(
+    //                 'c_name' => 'Nick Niebaum Enterprises',
+    //                 'c_address' => '1723 17th. St., Apt. #A',
+    //                 'c_city' => 'Nitro',
+    //                 'c_state' => 'WV',
+    //                 'c_zipcode' => '25143',
+    //                 'c_phone_main' => '(304) 871-6066',
+    //             ),
+    //             'billing' => array(),
+    //     );
+
+    //     $this->session->set_userdata('registration',$registration_data);
+    //     $this->session->set_userdata('registration_step',4);
+
+    //     redirect($signup_pages[$step-1]);
+    // }
 
     public function index()
     {
@@ -85,7 +143,7 @@ class Signup extends App_Controller
             
             // Save it to the session
             $this->session->set_userdata('registration',$registration_data);
-            $this->session->set_flashdata('previous_step',1);
+            $this->session->set_userdata('registration_step',2);
             
             // And proceed
             redirect('signup/step2');
@@ -101,15 +159,10 @@ class Signup extends App_Controller
     public function step2()
     {
         // Check that the previous step has been completed
-        if( ($prev_step=$this->session->flashdata('previous_step')) && $prev_step >=1)
+        if($this->session->userdata('registration_step') < 2)
         {
             redirect('signup');
         }
-        
-        $this->session->keep_flashdata();
-
-        // Retrieve the previous step data
-        $registration_data=$this->session->userdata('registration');
 
         config_merge('meta',array(
             'title' => 'Sign Up | Step 2 | RISKPIX',
@@ -159,6 +212,8 @@ class Signup extends App_Controller
         // If the form was submitted and no errors were found
         if($this->form_validation->run()!==FALSE)
         {
+            // Retrieve the previous step data
+            $registration_data=$this->session->userdata('registration');
             // Add the collected information to the data structure
             $registration_data['company']=array_merge($registration_data['company'],$this->input->post(array(
                 'address'=>'c_address',
@@ -173,7 +228,7 @@ class Signup extends App_Controller
 
             // Save it to the session
             $this->session->set_userdata('registration',$registration_data);
-            $this->session->set_flashdata('previous_step',2);
+            $this->session->set_userdata('registration_step',3);
 
             // And proceed
             redirect('signup/step3');
@@ -189,15 +244,10 @@ class Signup extends App_Controller
     public function step3()
     {
         // Check that the previous step has been completed
-        if($this->session->flashdata('previous_step')>=2)
+        if($this->session->userdata('registration_step') < 3)
         {
             redirect('signup');
         }
-        
-        $this->session->keep_flashdata();
-
-        // Retrieve the previous step data
-        $registration_data=$this->session->userdata('registration');
 
         config_merge('meta',array(
             'title' => 'Sign Up | Step 3 | RISKPIX',
@@ -205,7 +255,8 @@ class Signup extends App_Controller
         ));
 
         $this->data['body_class'] = 'bg5';
-        $this->data['pricing_options']=$this->pricing->get_pricing_options();
+        $this->data['pricing_options']=$this->pricing->get_dropdown();
+        $this->data['rollover_expirations']=$this->pricing->get_rollover_expirations();
 
         $validation_rules=array(
             array(
@@ -216,7 +267,7 @@ class Signup extends App_Controller
             array(
                 'field'=>'discount',
                 'label'=>'Discount Code',
-                'rules'=>'trim',
+                'rules'=>'trim|callback_discount_exists',
             ),
         );
 
@@ -224,18 +275,35 @@ class Signup extends App_Controller
         $this->load->library('form_validation');
         // And set validation rules
         $this->form_validation->set_rules($validation_rules);
+        $this->form_validation->set_message('discount_exists','There are no discounts with that code to apply.');
         // If the form was submitted and no errors were found
         if($this->form_validation->run()!==FALSE)
         {
-            // Add the collected information to the data structure
-            $registration_data['billing']=array_merge($registration_data['billing'],$this->input->post(array(
-                'pricing',
-                'discount',
-            )));
+            // Retrieve the previous step data
+            $registration_data=$this->session->userdata('registration');
+
+            //if($pricing_id=$this->input->post('pricing') && )
+            if($pricing_id=$this->input->post('pricing'))
+            {
+                $registration_data['pricing']=$this->pricing->get($pricing_id);
+            }
+            else
+            {
+                $registration_data['pricing']=array();
+            }
+
+            if($discount_code=$this->input->post('discount'))
+            {
+                $registration_data['discount']=$this->discount->get_by_code($discount_code);
+            }
+            else
+            {
+                $registration_data['discount']=array();
+            }
 
             // Save it to the session
             $this->session->set_userdata('registration',$registration_data);
-            $this->session->set_flashdata('previous_step',3);
+            $this->session->set_userdata('registration_step',4);
 
             // And proceed
             redirect('signup/confirm');
@@ -248,18 +316,34 @@ class Signup extends App_Controller
         }
     }
 
+    public function discount_exists($str)
+    {
+        if(empty($str))
+        {
+            return TRUE;
+        }
+        else
+        {
+            $discount=$this->discount->get_by_code($str);
+            return !empty($discount);
+        }
+    }
+
     public function confirm()
     {
         // Check that the previous step has been completed
-        if($this->session->flashdata('previous_step')>=3)
+        if($this->session->userdata('registration_step') < 4)
         {
             redirect('signup');
         }
-        
-        $this->session->keep_flashdata();
 
         // Retrieve the previous step data
         $registration_data=$this->session->userdata('registration');
+
+        if(isset($_GET['export']))
+        {
+            var_export($registration_data); exit;
+        }
 
         $this->data['registration_data']=$registration_data;
 /*
@@ -304,6 +388,13 @@ class Signup extends App_Controller
                   // The card has been declined
                 }
 */
+    }
+
+    public function test1()
+    {
+        $this->view=FALSE;
+        $a=$this->discount->get_by(array('dc_code'=>'asdf'));
+        var_dump($a);
     }
 }
 

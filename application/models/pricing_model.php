@@ -3,24 +3,36 @@
 /* For Client Configuration */
 class Pricing_model extends App_Model
 {
-  protected $_table='pricing';
+    protected $_table='pricing';
+    protected $primary_key='p_ID';
+    protected $protected_attributes=array('p_ID');
 
-  public function __construct()
-  {
-    parent::__construct();
-  }
+    public function get_dropdown()
+    {
+        $dropdown=array();
+        $rows=$this
+            ->order_by('p_volume, p_roll_over')
+            ->get_many_by('p_expiration_date >= NOW()');
 
-  public function get_pricing_options() {
-    $pricing = array();
-    $rows = $this->db->query('SELECT p_ID,p_volume,p_price,p_roll_over,p_roll_months FROM pricing WHERE p_expiration_date > NOW() ORDER BY p_volume,p_roll_over')->result_array();
+        foreach($rows as $row)
+        {
+            $dropdown[ $row['p_ID'] ]=$row['p_volume'] . ' @ $' . number_format($row['p_price'],2) . 'ea. / ($' . number_format($row['p_volume']*$row['p_price'],2) . ')';
+        }
 
-    foreach ($rows as $p) {
-      $k = $p['p_ID'];
-      $v = $p['p_volume'] . ' @ $' . number_format($p['p_price'],2) . 'ea. / ($' . number_format($p['p_volume']*$p['p_price'],2) . ')';
-      $pricing[$k] = $v;
+        return $dropdown;
     }
 
-    return $pricing;
-  }
+    public function get_rollover_expirations($date_format='m/d/Y')
+    {
+        $expirations=array();
+        $rows=$this->get_many_by('p_expiration_date >= NOW()');
+
+        foreach($rows as $row)
+        {
+            $expirations[ $row['p_ID'] ]=date($date_format,strtotime('+'.($row['p_roll_months']+1).' months'));
+        }
+
+        return $expirations;
+    }
 
 }

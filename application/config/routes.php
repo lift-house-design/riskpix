@@ -42,11 +42,12 @@ $route['default_controller'] = "site";
 $route['404_override'] = 'site/index';
 $route['sitemap.xml'] = 'site/sitemap_xml';
 $route['robots.txt'] = 'site/robots';
-//$route['sitemap'] = 'site/sitemap';
+
 $route['contact'] = 'site/contact';
 $route['terms'] = 'site/terms';
 $route['about'] = 'site/about';
 $route['news'] = 'site/news';
+$route['debug/(:any)/(:num)']='site/debug/$1/$2';
 $route['claim/(:num)'] = 'claim/page_$1';
 $route['report/(:num)'] = 'report/page_$1';
 $route['report/(:num)/(:any)'] = 'report/page_$1/$2';

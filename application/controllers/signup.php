@@ -365,6 +365,8 @@ class Signup extends App_Controller
             redirect('signup');
         }
 
+        $this->min_js[]='jquery.accordion.js';
+
         // Retrieve the previous step data
         $registration_data=$this->session->userdata('registration');
 
@@ -375,6 +377,8 @@ class Signup extends App_Controller
         $this->data['user_data']=$user_data;
         $this->data['company_data']=$company_data;
         $this->data['plan_data']=$plan_data;
+        
+        $this->data['states']=states_array(array(''=>'State'));
 /*
         $is_test_transaction = true;
         $stripe_public_key = 'pk_live_uKzioeuq4V96VGQDFkaEZcKj';

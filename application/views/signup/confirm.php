@@ -47,7 +47,7 @@
                     </div>
                 </div>
 
-                <h3 class="sub-heading">pricing plan information</h3>
+                <h3 class="sub-heading">billing information</h3>
                 <div class="form-field">
                     <?php echo form_label('Pricing Plan','field-pricing') ?>
                     <div class="value">
@@ -75,9 +75,81 @@
                     </div>
                 </div>
 
-                <h3>billing information</h3>
-
+                <h3 class="sub-heading">payment method</h3>
+                <div class="accordion">
+                    <a>Invoice</a>
+                    <div>
+                      <div class="form-field">
+                            <?php echo form_label('Address','field-invoice_address') ?>
+                            <div class="field">
+                                <?php echo form_input(array(
+                                    'id'=>'field-invoice_address',
+                                    'name'=>'invoice_address',
+                                    'placeholder'=>'Street Address',
+                                    'value'=>set_value('invoice_address'),
+                                )) ?>
+                            </div>
+                        </div>
+                        <div class="form-field">
+                            <?php echo form_label('City','field-invoice_city') ?>
+                            <div class="field">
+                                <?php echo form_input(array(
+                                    'id'=>'field-invoice_city',
+                                    'name'=>'invoice_city',
+                                    'placeholder'=>'City',
+                                    'value'=>set_value('invoice_city'),
+                                )) ?>
+                            </div>
+                        </div>
+                        <div class="form-field">
+                            <?php echo form_label('State','field-invoice_state') ?>
+                            <div class="field">
+                                <?php echo form_dropdown('invoice_state',$states,set_value('invoice_state')) ?>
+                            </div>
+                        </div>
+                        <div class="form-field">
+                            <?php echo form_label('Zip Code','field-invoice_zip') ?>
+                            <div class="field">
+                                <?php echo form_input(array(
+                                    'id'=>'field-invoice_zip',
+                                    'name'=>'invoice_zip',
+                                    'placeholder'=>'Zip Code',
+                                    'value'=>set_value('invoice_zip'),
+                                )) ?>
+                            </div>
+                        </div>
+                    </div>
+                    <a>Credit Card</a>
+                    <div>
+                        credit card content
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+<script>
+    $(function(){
+        $('.accordion')
+            .children('a')
+            .click(function(){
+                var header=$(this),
+                    panel=$(this).next();
+                //Expand or collapse this panel
+                panel.slideToggle('fast',function(){
+                   // If collapsed
+                    if(panel.filter(':hidden').length)
+                    {
+                        header.removeClass('selected');
+                    }
+                    else
+                    {
+                        header.addClass('selected');
+                    }
+                });
+
+                //Hide the other panels
+                $(".accordion > div").not(panel).slideUp('fast').prev().removeClass('selected');
+            });
+    });
+</script>

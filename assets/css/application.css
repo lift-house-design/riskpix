@@ -1481,6 +1481,28 @@ textarea.placeholder {
 /**
  * MODULES
  */
+.accordion {
+  margin-top: 10px; }
+  .accordion > a {
+    display: block;
+    cursor: pointer;
+    background-color: #343434;
+    padding: 10px 20px;
+    font-size: 20px;
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 10px; }
+    .accordion > a:hover {
+      text-decoration: none; }
+    .accordion > a.selected {
+      background-color: #40c1c4; }
+  .accordion > div {
+    display: none;
+    margin-bottom: 10px;
+    padding: 0 20px; }
+    .accordion > div.default {
+      display: block; }
+
 .form,
 form {
   visibility: visible; }
@@ -1547,3 +1569,5 @@ select {
 #discount-code {
   font-weight: bold;
   color: #f66; }
+
+/*# sourceMappingURL=application.css.map */

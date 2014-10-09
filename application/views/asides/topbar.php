@@ -7,6 +7,8 @@
 	<a href="/authentication/log_in">
 		Log In
 	</a>
+<?php } else { ?>
+	<a href="/authentication/log_out">Log Out</a>
 <?php } ?>
 
 	<?php if(strlen($_SERVER['REQUEST_URI']) > 1){ ?>
@@ -50,9 +52,9 @@
 		<a href="/contact" class="dark">
 			Contact Us
 		</a>
-		<a href="/authentication/log_out" class="dark">
+		<!-- <a href="/authentication/log_out" class="dark">
 			Log Out
-		</a>
+		</a> -->
 	<?php } ?>
 
 </div>

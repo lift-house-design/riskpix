@@ -33,6 +33,7 @@ class Signup extends App_Controller
     {
         $this->models[]='pricing';
         $this->models[]='discount';
+        $this->models[]='company';
         parent::__construct();
         $this->load->library('session');
         $this->data['has_errors']=FALSE;
@@ -384,6 +385,14 @@ class Signup extends App_Controller
         // If the form was submitted and no errors were found
         if($this->form_validation->run()!==FALSE)
         {
+            $user_id=$this->user->insert(array_merge($user_data,array(
+                'password'=>sha1($user_data['password']),
+                'phone_text_capable'=>0,
+                'status'=>'ok',
+            )));
+            $company_id=$this->company->insert(array_merge($company_data,array(
+                'c_user'=>$user_id,
+            )));
             redirect('signup/success');
         }
         elseif($this->input->post())

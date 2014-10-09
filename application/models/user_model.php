@@ -14,10 +14,15 @@ class User_model extends App_Model
 
 	public $before_delete=array('before_delete');
 
+	public $after_create=array('after_create');
+
 /*-----------------------------------------------------------------------*/
 
-	public $logged_in=FALSE;
+	protected $default_roles=array('insurer');
 	
+	public $logged_in=FALSE;
+	public $roles=array();
+
 	public $data;
 	
 	public function __construct()
@@ -54,6 +59,16 @@ class User_model extends App_Model
 		}
 
 		return $data;
+	}
+
+	public function after_create($id)
+	{
+		if(empty($this->roles))
+		{
+			$this->roles=$this->default_roles;
+		}
+
+		$this->save_roles($id,$this->roles);
 	}
 
 	public function before_delete($id)

@@ -194,7 +194,11 @@
                 });
 
                 //Hide the other panels
-                $('.accordion > div').not(panel).slideUp('fast').prev().removeClass('selected');
+                $('.accordion > div')
+                    .not(panel)
+                    .slideUp('fast')
+                    .prev()
+                    .removeClass('selected');
             });
     });
 </script>

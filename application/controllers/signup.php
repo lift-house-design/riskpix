@@ -365,20 +365,37 @@ class Signup extends App_Controller
             redirect('signup');
         }
 
-        $this->min_js[]='jquery.accordion.js';
-
         // Retrieve the previous step data
         $registration_data=$this->session->userdata('registration');
-
         $user_data=$registration_data['user'];
         $company_data=$registration_data['company'];
         $plan_data=$registration_data['plan'];
 
-        $this->data['user_data']=$user_data;
-        $this->data['company_data']=$company_data;
-        $this->data['plan_data']=$plan_data;
-        
-        $this->data['states']=states_array(array(''=>'State'));
+        $validation_rules=array(
+            /*array(
+                'field'=>'pricing',
+                'label'=>'Monthly Plan',
+                'rules'=>'trim|required',
+            ),*/
+        );
+
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules($validation_rules);
+        // If the form was submitted and no errors were found
+        // if($this->form_validation->run()!==FALSE)
+        if($this->input->post())
+        {
+            redirect('signup/success');
+        }
+        else
+        {
+            $this->data['user_data']=$user_data;
+            $this->data['company_data']=$company_data;
+            $this->data['plan_data']=$plan_data;
+            $this->data['states']=states_array(array(''=>'State'));
+            $this->data['months']=array('01','02','03','04','05','06','07','08','09','10','11','12');
+            $this->data['years']=range(date('Y'),date('Y')+10);
+        }
 /*
         $is_test_transaction = true;
         $stripe_public_key = 'pk_live_uKzioeuq4V96VGQDFkaEZcKj';
@@ -421,6 +438,14 @@ class Signup extends App_Controller
                   // The card has been declined
                 }
 */
+    }
+
+    public function success()
+    {
+        config_merge('meta',array(
+            'title' => 'Sign Up | Registration Successful | RISKPIX',
+            'description' => 'Find out more about our custom underwriting solutions.'
+        ));
     }
 
     public function test1()

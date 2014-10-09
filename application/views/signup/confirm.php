@@ -76,6 +76,7 @@
                 </div>
 
                 <h3 class="sub-heading">payment method</h3>
+                <?php echo form_open() ?>
                 <div class="accordion">
                     <a>Invoice</a>
                     <div>
@@ -121,9 +122,42 @@
                     </div>
                     <a>Credit Card</a>
                     <div>
-                        credit card content
+                        <div class="form-field">
+                            <?php echo form_label('Card Number','field-cc_number') ?>
+                            <div class="cc-num field">
+                                <?php echo form_input(array(
+                                    'id'=>'field-cc_number',
+                                    'class'=>'number',
+                                    'name'=>'cc_number',
+                                    'placeholder'=>'Card Number',
+                                    'value'=>set_value('cc_number'),
+                                )) ?>
+                                <?php echo form_input(array(
+                                    'id'=>'field-cc_cvc',
+                                    'class'=>'cvc',
+                                    'name'=>'cc_cvc',
+                                    'placeholder'=>'CVC',
+                                    'value'=>set_value('cc_cvc'),
+                                )) ?>
+                            </div>
+                            <div class="hint">
+                                <a href="http://en.wikipedia.org/wiki/Card_security_code" target="_blank">What is a CVC?</a>
+                            </div>
+                        </div>
+                        <div class="form-field">
+                            <?php echo form_label('Expiration Date','field-cc_exp') ?>
+                            <div class="cc-exp field">
+                                <?php echo form_dropdown('cc_exp_month',$months,set_value('cc_exp_month')) ?>
+                                <?php echo form_dropdown('cc_exp_year',$years,set_value('cc_exp_year')) ?>
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
+                <div class="form-buttons">
+                    <?php echo form_submit(FALSE,'Complete Registration') ?>
+                </div>
+                <?php echo form_close() ?>
             </div>
         </div>
     </div>
@@ -149,7 +183,7 @@
                 });
 
                 //Hide the other panels
-                $(".accordion > div").not(panel).slideUp('fast').prev().removeClass('selected');
+                $('.accordion > div').not(panel).slideUp('fast').prev().removeClass('selected');
             });
     });
 </script>

@@ -1469,6 +1469,14 @@ textarea.placeholder {
 .h100 {
   padding: 0 20px; }
 
+.form-field > .cc-num.field, .form-field > .cc-exp.field {
+  *zoom: 1; }
+  .form-field > .cc-num.field:before, .form-field > .cc-exp.field:before, .form-field > .cc-num.field:after, .form-field > .cc-exp.field:after {
+    content: " ";
+    display: table; }
+  .form-field > .cc-num.field:after, .form-field > .cc-exp.field:after {
+    clear: both; }
+
 /**
  * BASE
  */
@@ -1491,7 +1499,8 @@ textarea.placeholder {
     font-size: 20px;
     color: #fff;
     font-weight: bold;
-    margin-bottom: 10px; }
+    margin-bottom: 10px;
+    text-align: center; }
     .accordion > a:hover {
       text-decoration: none; }
     .accordion > a.selected {
@@ -1519,7 +1528,8 @@ input[type="reset"],
   visibility: visible; }
 
 .form-field {
-  margin: 10px 0; }
+  margin: 10px 0;
+  text-align: left; }
   .form-field > label {
     display: block;
     margin-bottom: 5px; }
@@ -1528,7 +1538,8 @@ input[type="reset"],
   .form-field > .field {
     display: block; }
   .form-field > .value {
-    display: block; }
+    display: block;
+    text-align: center; }
   .form-field > .hint {
     margin-left: 10px;
     display: block; }
@@ -1545,10 +1556,30 @@ input[type="reset"],
 form {
   text-align: left; }
 
+.form-field > .cc-num.field .number {
+  width: 74%;
+  float: left; }
+.form-field > .cc-num.field .cvc {
+  width: 24%;
+  margin-left: 2%;
+  float: left; }
+.form-field > .cc-exp.field input[type="text"],
+.form-field > .cc-exp.field input[type="password"],
+.form-field > .cc-exp.field select {
+  width: 48%;
+  float: left;
+  margin-right: 2%; }
+  .form-field > .cc-exp.field input[type="text"]:last-child,
+  .form-field > .cc-exp.field input[type="password"]:last-child,
+  .form-field > .cc-exp.field select:last-child {
+    margin-left: 0; }
 .form-field > .value {
   font-weight: bold; }
 .form-field > .hint {
   font-size: 11px; }
+.form-field a {
+  color: #40c1c4;
+  font-weight: bold; }
 
 .form-buttons {
   text-align: center; }
@@ -1569,5 +1600,3 @@ select {
 #discount-code {
   font-weight: bold;
   color: #f66; }
-
-/*# sourceMappingURL=application.css.map */

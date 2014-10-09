@@ -12,6 +12,7 @@
 
 %form-field {
     margin: $spacing_sm 0;
+    text-align: left;
 
     > label {
         display: block;
@@ -28,6 +29,7 @@
 
     > %value-container {
         display: block;
+        text-align: center;
     }
 
     %hint-container {

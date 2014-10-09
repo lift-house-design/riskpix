@@ -1484,7 +1484,8 @@ textarea.placeholder {
   font-family: 'Oleo',cursive;
   color: #999;
   font-weight: normal;
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  text-align: center; }
 
 /**
  * MODULES
@@ -1551,6 +1552,10 @@ input[type="reset"],
   .form-buttons input[type="reset"],
   .form-buttons .button {
     margin-right: 10px; }
+
+input[type="checkbox"],
+input[type="radio"] {
+  height: auto; }
 
 .form,
 form {

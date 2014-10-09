@@ -372,30 +372,33 @@ class Signup extends App_Controller
         $plan_data=$registration_data['plan'];
 
         $validation_rules=array(
-            /*array(
-                'field'=>'pricing',
-                'label'=>'Monthly Plan',
-                'rules'=>'trim|required',
-            ),*/
+            array(
+                'field'=>'accept_terms',
+                'label'=>'Terms & Conditions',
+                'rules'=>'required',
+            ),
         );
 
         $this->load->library('form_validation');
         $this->form_validation->set_rules($validation_rules);
         // If the form was submitted and no errors were found
-        // if($this->form_validation->run()!==FALSE)
-        if($this->input->post())
+        if($this->form_validation->run()!==FALSE)
         {
             redirect('signup/success');
         }
-        else
+        elseif($this->input->post())
         {
-            $this->data['user_data']=$user_data;
-            $this->data['company_data']=$company_data;
-            $this->data['plan_data']=$plan_data;
-            $this->data['states']=states_array(array(''=>'State'));
-            $this->data['months']=array('01','02','03','04','05','06','07','08','09','10','11','12');
-            $this->data['years']=range(date('Y'),date('Y')+10);
+            $this->data['has_errors']=TRUE;
         }
+
+        $this->data['user_data']=$user_data;
+        $this->data['company_data']=$company_data;
+        $this->data['plan_data']=$plan_data;
+        $this->data['total']=$plan_data['volume']*$plan_data['price'];
+        $this->data['states']=states_array(array(''=>'State'));
+        $this->data['months']=array('01','02','03','04','05','06','07','08','09','10','11','12');
+        $this->data['years']=range(date('Y'),date('Y')+10);
+
 /*
         $is_test_transaction = true;
         $stripe_public_key = 'pk_live_uKzioeuq4V96VGQDFkaEZcKj';

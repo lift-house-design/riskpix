@@ -5,7 +5,7 @@
     <div class="auto">
         <div class="contact">
             <div class="center540">
-                <?php var_dump($user_data,$company_data,$plan_data); ?>
+                <?php //var_dump($user_data,$company_data,$plan_data); ?>
                 <h2 class="oleo c0">sign up - confirm</h2>
                 <p>Please check and confirm all the information below is correct before submitting your payment.</p>
                 <h3 class="sub-heading">account information</h3>
@@ -71,89 +71,100 @@
                 <div class="form-field">
                     <?php echo form_label('Total Due','field-total') ?>
                     <div class="value">
-                        <?php echo '$' . number_format($plan_data['volume']*$plan_data['price'],2) ?>
+                        <?php echo '$' . number_format($total,2) ?>
                     </div>
                 </div>
-
-                <h3 class="sub-heading">payment method</h3>
                 <?php echo form_open() ?>
-                <div class="accordion">
-                    <a>Invoice</a>
-                    <div>
-                      <div class="form-field">
-                            <?php echo form_label('Address','field-invoice_address') ?>
-                            <div class="field">
-                                <?php echo form_input(array(
-                                    'id'=>'field-invoice_address',
-                                    'name'=>'invoice_address',
-                                    'placeholder'=>'Street Address',
-                                    'value'=>set_value('invoice_address'),
-                                )) ?>
+                <?php if($total > 0): ?>
+                    <h3 class="sub-heading">payment method</h3>
+                    <div class="accordion">
+                        <a>Invoice</a>
+                        <div>
+                          <div class="form-field">
+                                <?php echo form_label('Address','field-invoice_address') ?>
+                                <div class="field">
+                                    <?php echo form_input(array(
+                                        'id'=>'field-invoice_address',
+                                        'name'=>'invoice_address',
+                                        'placeholder'=>'Street Address',
+                                        'value'=>set_value('invoice_address'),
+                                    )) ?>
+                                </div>
+                            </div>
+                            <div class="form-field">
+                                <?php echo form_label('City','field-invoice_city') ?>
+                                <div class="field">
+                                    <?php echo form_input(array(
+                                        'id'=>'field-invoice_city',
+                                        'name'=>'invoice_city',
+                                        'placeholder'=>'City',
+                                        'value'=>set_value('invoice_city'),
+                                    )) ?>
+                                </div>
+                            </div>
+                            <div class="form-field">
+                                <?php echo form_label('State','field-invoice_state') ?>
+                                <div class="field">
+                                    <?php echo form_dropdown('invoice_state',$states,set_value('invoice_state')) ?>
+                                </div>
+                            </div>
+                            <div class="form-field">
+                                <?php echo form_label('Zip Code','field-invoice_zip') ?>
+                                <div class="field">
+                                    <?php echo form_input(array(
+                                        'id'=>'field-invoice_zip',
+                                        'name'=>'invoice_zip',
+                                        'placeholder'=>'Zip Code',
+                                        'value'=>set_value('invoice_zip'),
+                                    )) ?>
+                                </div>
                             </div>
                         </div>
-                        <div class="form-field">
-                            <?php echo form_label('City','field-invoice_city') ?>
-                            <div class="field">
-                                <?php echo form_input(array(
-                                    'id'=>'field-invoice_city',
-                                    'name'=>'invoice_city',
-                                    'placeholder'=>'City',
-                                    'value'=>set_value('invoice_city'),
-                                )) ?>
+                        <a>Credit Card</a>
+                        <div>
+                            <div class="form-field">
+                                <?php echo form_label('Card Number','field-cc_number') ?>
+                                <div class="cc-num field">
+                                    <?php echo form_input(array(
+                                        'id'=>'field-cc_number',
+                                        'class'=>'number',
+                                        'name'=>'cc_number',
+                                        'placeholder'=>'Card Number',
+                                        'value'=>set_value('cc_number'),
+                                    )) ?>
+                                    <?php echo form_input(array(
+                                        'id'=>'field-cc_cvc',
+                                        'class'=>'cvc',
+                                        'name'=>'cc_cvc',
+                                        'placeholder'=>'CVC',
+                                        'value'=>set_value('cc_cvc'),
+                                    )) ?>
+                                </div>
+                                <div class="hint">
+                                    <a href="http://en.wikipedia.org/wiki/Card_security_code" target="_blank">What is a CVC?</a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-field">
-                            <?php echo form_label('State','field-invoice_state') ?>
-                            <div class="field">
-                                <?php echo form_dropdown('invoice_state',$states,set_value('invoice_state')) ?>
+                            <div class="form-field">
+                                <?php echo form_label('Expiration Date','field-cc_exp') ?>
+                                <div class="cc-exp field">
+                                    <?php echo form_dropdown('cc_exp_month',$months,set_value('cc_exp_month')) ?>
+                                    <?php echo form_dropdown('cc_exp_year',$years,set_value('cc_exp_year')) ?>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-field">
-                            <?php echo form_label('Zip Code','field-invoice_zip') ?>
-                            <div class="field">
-                                <?php echo form_input(array(
-                                    'id'=>'field-invoice_zip',
-                                    'name'=>'invoice_zip',
-                                    'placeholder'=>'Zip Code',
-                                    'value'=>set_value('invoice_zip'),
-                                )) ?>
-                            </div>
+                            
                         </div>
                     </div>
-                    <a>Credit Card</a>
-                    <div>
-                        <div class="form-field">
-                            <?php echo form_label('Card Number','field-cc_number') ?>
-                            <div class="cc-num field">
-                                <?php echo form_input(array(
-                                    'id'=>'field-cc_number',
-                                    'class'=>'number',
-                                    'name'=>'cc_number',
-                                    'placeholder'=>'Card Number',
-                                    'value'=>set_value('cc_number'),
-                                )) ?>
-                                <?php echo form_input(array(
-                                    'id'=>'field-cc_cvc',
-                                    'class'=>'cvc',
-                                    'name'=>'cc_cvc',
-                                    'placeholder'=>'CVC',
-                                    'value'=>set_value('cc_cvc'),
-                                )) ?>
-                            </div>
-                            <div class="hint">
-                                <a href="http://en.wikipedia.org/wiki/Card_security_code" target="_blank">What is a CVC?</a>
-                            </div>
-                        </div>
-                        <div class="form-field">
-                            <?php echo form_label('Expiration Date','field-cc_exp') ?>
-                            <div class="cc-exp field">
-                                <?php echo form_dropdown('cc_exp_month',$months,set_value('cc_exp_month')) ?>
-                                <?php echo form_dropdown('cc_exp_year',$years,set_value('cc_exp_year')) ?>
-                            </div>
-                        </div>
-                        
+                <?php endif; ?>
+                <div class="form-field">
+                    <?php echo form_label('Terms &amp; Conditions','field-accept_terms') ?>
+                    <div class="field">
+                        <?php echo form_checkbox('accept_terms','1',false) ?> I agree to and accept the <a href="" target="_blank">terms &amp; conditions</a>.
+                        <?php if($total > 0): ?>
+                            I also agree to allow Riskpix.com to charge my credit card or send an invoice to the address I've entered above.
+                        <?php endif; ?>
                     </div>
                 </div>
+                
                 <div class="form-buttons">
                     <?php echo form_submit(FALSE,'Complete Registration') ?>
                 </div>

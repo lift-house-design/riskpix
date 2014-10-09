@@ -13,6 +13,7 @@
     color: #999;
     font-weight: normal;
     margin-bottom: 0;
+    text-align: center;
 }
 
 /**
@@ -72,6 +73,11 @@ select {
  input[type="reset"],
  .button {
     @extend %button;
+ }
+
+ input[type="checkbox"],
+ input[type="radio"] {
+    height: auto;
  }
 
  .form,

@@ -1,7 +1,7 @@
 <?php
 
 
-function form_checkbox($values, $val=false, $name='', $title=false, $attr='')
+/*function form_checkbox($values, $val=false, $name='', $title=false, $attr='')
 {
 	$html = "<table $attr>";
 	foreach($values as $value){
@@ -12,7 +12,7 @@ function form_checkbox($values, $val=false, $name='', $title=false, $attr='')
 	}
 	$html .= "</table>";
 	return $html;
-}
+}*/
 
 function form_select($data, $val=false, $name='', $title=false, $attr='')
 {
